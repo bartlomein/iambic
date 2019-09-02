@@ -1,14 +1,15 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './containers/Home';
+import Login from './containers/Login';
+import Register from './containers/Register';
 
-import { ApolloProvider } from '@apollo/react-hooks';
-
-const App = client => (
-  <ApolloProvider client={client}>
-    <div>
-      <h2>My first Apollo app 🚀</h2>
-    </div>
-  </ApolloProvider>
+const App = () => (
+  <Router>
+    <Route exact path='/' component={Home} />
+    <Route exact path='/login' component={Login} />
+    <Route exact path='/Register' component={Register} />
+  </Router>
 );
 
 export default App;
