@@ -9,8 +9,7 @@ const Home = () => {
     console.log(data);
   }
   return (
-    <div>
-      HOME
+    <div className='home-container'>
       <GeneratedPoemCard />
     </div>
   );
