@@ -3,13 +3,17 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './containers/Home';
 import Login from './containers/Login';
 import Register from './containers/Register';
+import { AuthProvider } from './context/auth';
+import AuthRoute from './utils/AuthRoute';
 
 const App = () => (
-  <Router>
-    <Route exact path='/' component={Home} />
-    <Route exact path='/login' component={Login} />
-    <Route exact path='/register' component={Register} />
-  </Router>
+  <AuthProvider>
+    <Router>
+      <Route exact path='/' component={Home} />
+      <AuthRoute exact path='/login' component={Login} />
+      <AuthRoute exact path='/register' component={Register} />
+    </Router>
+  </AuthProvider>
 );
 
 export default App;
