@@ -9,13 +9,15 @@
     "apollo-link-http": "^1.5.15",
     "emotion": "^10.0.17",
     "graphql": "^14.5.4",
+    "graphql-tag": "^2.10.1",
     "jwt-decode": "^2.2.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
-    "redux": "^4.0.4"
+    "redux": "^4.0.4",
+    "shards-react": "^1.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
