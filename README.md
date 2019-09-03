@@ -4,8 +4,20 @@
 
 This is a full stack application for users to vote on and admire AI generated poetry
 
+### TODO
+
 DONE:
-backend
-poetry generation
+
+- Back end
+  ..*register
+  ..*logging in
+  ..*create post
+  ..*like post
+  ..\*comment on post
+
+*Front end
+..*login
+..*register
+..*post a poem
+
 TODO:
-all of the front end
