@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useTrail, animated } from 'react-spring';
+import React, { useState, useEffect } from "react";
+import { useTrail, animated } from "react-spring";
 
-import { Button, Card, CardBody } from 'shards-react';
-import apiCall from '../api';
-import gql from 'graphql-tag';
+import { Button, Card, CardBody } from "shards-react";
+import apiCall from "../api";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/react-hooks";
+import { FETCH_POSTS_QUERY } from "../utils/graphql";
 
 const config = { mass: 1, tension: 700, friction: 500 };
 
@@ -18,6 +20,19 @@ const GeneratedPoemCard = () => {
     from: { opacity: 0, x: 20 }
   });
 
+  const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
+    variables: { body: poem && poem.poem && poem.poem, type: "poem" },
+    type: "poem",
+    update(proxy, result) {
+      const data = proxy.readQuery({
+        query: FETCH_POSTS_QUERY
+      });
+      data.getPosts = [result.data.createPost, ...data.getPosts];
+      proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
+      poem = [];
+    }
+  });
+
   const generateNewPoem = () => {
     setPoem(null);
     callPoem();
@@ -25,7 +40,7 @@ const GeneratedPoemCard = () => {
 
   const callPoem = () => {
     const getPoem = async () => {
-      const poem = await apiCall('poetry', 4);
+      const poem = await apiCall("poetry", 4);
 
       setPoem(poem);
     };
@@ -40,15 +55,13 @@ const GeneratedPoemCard = () => {
   return (
     <div>
       <Card>
-        {/* <CardHeader>Generated Poem</CardHeader> */}
-
         <CardBody>
-          <div className='trails-main-poem' onClick={() => set(state => state)}>
+          <div className="trails-main-poem" onClick={() => set(state => state)}>
             <div>
               {trail.map(({ x, height, ...rest }, index) => (
                 <animated.div
                   key={poem && poem.poem && poem.poem[index]}
-                  className='trails-text'
+                  className="trails-text"
                   style={{
                     ...rest,
                     transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
@@ -64,17 +77,20 @@ const GeneratedPoemCard = () => {
           <Button outline onClick={generateNewPoem}>
             Generate
           </Button>
+          <Button outline onClick={() => createPost(poem.poem)}>
+            Create Post
+          </Button>
         </CardBody>
       </Card>
 
-      <div></div>
+      <div />
     </div>
   );
 };
 
 const CREATE_POST_MUTATION = gql`
-  mutation createPost($body: String!) {
-    createPost(body: $body) {
+  mutation createPost($body: [String]!) {
+    createPost(body: $body, type: "poem") {
       id
       body
       createdAt
