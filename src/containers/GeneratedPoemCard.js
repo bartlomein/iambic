@@ -11,6 +11,7 @@ const config = { mass: 1, tension: 700, friction: 500 };
 
 const GeneratedPoemCard = () => {
   const [poem, setPoem] = useState(null);
+  const [poemPostedMessage, setPoemPostedMessage] = useState(null);
   const [toggle, set] = useState(true);
   const trail = useTrail(poem && poem.poem && poem.poem.length, {
     config,
@@ -21,7 +22,10 @@ const GeneratedPoemCard = () => {
   });
 
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
-    variables: { body: poem && poem.poem && poem.poem, type: "poem" },
+    variables: {
+      body: poem && poem.poem && poem.poem.length > 1 && poem.poem,
+      type: "poem"
+    },
     type: "poem",
     update(proxy, result) {
       const data = proxy.readQuery({
@@ -29,11 +33,13 @@ const GeneratedPoemCard = () => {
       });
       data.getPosts = [result.data.createPost, ...data.getPosts];
       proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
+      setPoemPostedMessage("Congratulations, your poem has been posted!");
       poem = [];
     }
   });
 
   const generateNewPoem = () => {
+    setPoemPostedMessage(null);
     setPoem(null);
     callPoem();
   };
@@ -56,30 +62,44 @@ const GeneratedPoemCard = () => {
     <div>
       <Card>
         <CardBody>
-          <div className="trails-main-poem" onClick={() => set(state => state)}>
-            <div>
-              {trail.map(({ x, height, ...rest }, index) => (
-                <animated.div
-                  key={poem && poem.poem && poem.poem[index]}
-                  className="trails-text"
-                  style={{
-                    ...rest,
-                    transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
-                  }}
-                >
-                  <animated.div style={{ height }}>
-                    {poem && poem.poem && poem.poem[index]}
-                  </animated.div>
-                </animated.div>
-              ))}
-            </div>
-          </div>
-          <Button outline onClick={generateNewPoem}>
-            Generate
-          </Button>
-          <Button outline onClick={() => createPost(poem.poem)}>
-            Create Post
-          </Button>
+          {poemPostedMessage ? (
+            <>
+              <div>{poemPostedMessage}</div>{" "}
+              <Button outline onClick={generateNewPoem}>
+                Generate
+              </Button>
+            </>
+          ) : (
+            <>
+              <div
+                className="trails-main-poem"
+                onClick={() => set(state => state)}
+              >
+                <div>
+                  {trail.map(({ x, height, ...rest }, index) => (
+                    <animated.div
+                      key={poem && poem.poem && poem.poem[index]}
+                      className="trails-text"
+                      style={{
+                        ...rest,
+                        transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
+                      }}
+                    >
+                      <animated.div style={{ height }}>
+                        {poem && poem.poem && poem.poem[index]}
+                      </animated.div>
+                    </animated.div>
+                  ))}
+                </div>
+              </div>
+              <Button outline onClick={generateNewPoem}>
+                Generate
+              </Button>
+              <Button outline onClick={() => createPost(poem.poem)}>
+                Create Post
+              </Button>
+            </>
+          )}
         </CardBody>
       </Card>
 
