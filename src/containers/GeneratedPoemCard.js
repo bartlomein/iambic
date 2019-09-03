@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTrail, animated } from 'react-spring';
 
-import {
-  Button,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardImg,
-  CardBody,
-  CardFooter
-} from 'shards-react';
+import { Button, Card, CardBody } from 'shards-react';
 import apiCall from '../api';
+import gql from 'graphql-tag';
+
 const config = { mass: 1, tension: 700, friction: 500 };
+
 const GeneratedPoemCard = () => {
   const [poem, setPoem] = useState(null);
   const [toggle, set] = useState(true);
@@ -77,4 +72,27 @@ const GeneratedPoemCard = () => {
   );
 };
 
+const CREATE_POST_MUTATION = gql`
+  mutation createPost($body: String!) {
+    createPost(body: $body) {
+      id
+      body
+      createdAt
+      username
+      likes {
+        id
+        username
+        createdAt
+      }
+      likeCount
+      comments {
+        id
+        body
+        username
+        createdAt
+      }
+      commentCount
+    }
+  }
+`;
 export default GeneratedPoemCard;

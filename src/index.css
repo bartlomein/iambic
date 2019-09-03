@@ -11,6 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.card {
+  /* background-image: linear-gradient(
+    to right,
+    #fff 0%,
+    #fff 19%,
+    #fff 70%,
+    #fe9a8b 100%
+  ); */
+}
 .home-container {
   margin: 0 auto;
   max-width: 1000px;
