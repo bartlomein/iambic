@@ -23,7 +23,7 @@ const GeneratedPoemCard = () => {
 
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
     variables: {
-      title: poem && poem.title && poem.title,
+      title: poem && poem.title && poem.title[0],
       body: poem && poem.poem && poem.poem.length > 1 && poem.poem,
       type: 'poem'
     },
@@ -77,6 +77,7 @@ const GeneratedPoemCard = () => {
                 onClick={() => set(state => state)}
               >
                 <div>
+                  <h3>{poem && poem.title && poem.title}</h3>
                   {trail.map(({ x, height, ...rest }, index) => (
                     <animated.div
                       key={poem && poem.poem && poem.poem[index]}
@@ -110,10 +111,11 @@ const GeneratedPoemCard = () => {
 };
 
 const CREATE_POST_MUTATION = gql`
-  mutation createPost($body: [String]!) {
-    createPost(body: $body, type: "poem") {
+  mutation createPost($title: String, $body: [String]!) {
+    createPost(title: $title, body: $body, type: "poem") {
       id
       body
+      title
       createdAt
       username
       likes {
