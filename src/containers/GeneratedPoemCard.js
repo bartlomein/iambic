@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useTrail, animated } from "react-spring";
+import React, { useState, useEffect } from 'react';
+import { useTrail, animated } from 'react-spring';
 
-import { Button, Card, CardBody } from "shards-react";
-import apiCall from "../api";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
-import { FETCH_POSTS_QUERY } from "../utils/graphql";
+import { Button, Card, CardBody } from 'shards-react';
+import apiCall from '../api';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
+import { FETCH_POSTS_QUERY } from '../utils/graphql';
 
 const config = { mass: 1, tension: 700, friction: 500 };
 
@@ -23,17 +23,18 @@ const GeneratedPoemCard = () => {
 
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
     variables: {
+      title: poem && poem.title && poem.title,
       body: poem && poem.poem && poem.poem.length > 1 && poem.poem,
-      type: "poem"
+      type: 'poem'
     },
-    type: "poem",
+    type: 'poem',
     update(proxy, result) {
       const data = proxy.readQuery({
         query: FETCH_POSTS_QUERY
       });
       data.getPosts = [result.data.createPost, ...data.getPosts];
       proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
-      setPoemPostedMessage("Congratulations, your poem has been posted!");
+      setPoemPostedMessage('Congratulations, your poem has been posted!');
       poem = [];
     }
   });
@@ -46,7 +47,7 @@ const GeneratedPoemCard = () => {
 
   const callPoem = () => {
     const getPoem = async () => {
-      const poem = await apiCall("poetry", 4);
+      const poem = await apiCall('poetry', 4);
 
       setPoem(poem);
     };
@@ -64,7 +65,7 @@ const GeneratedPoemCard = () => {
         <CardBody>
           {poemPostedMessage ? (
             <>
-              <div>{poemPostedMessage}</div>{" "}
+              <div>{poemPostedMessage}</div>{' '}
               <Button outline onClick={generateNewPoem}>
                 Generate
               </Button>
@@ -72,14 +73,14 @@ const GeneratedPoemCard = () => {
           ) : (
             <>
               <div
-                className="trails-main-poem"
+                className='trails-main-poem'
                 onClick={() => set(state => state)}
               >
                 <div>
                   {trail.map(({ x, height, ...rest }, index) => (
                     <animated.div
                       key={poem && poem.poem && poem.poem[index]}
-                      className="trails-text"
+                      className='trails-text'
                       style={{
                         ...rest,
                         transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
