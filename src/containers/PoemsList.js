@@ -1,11 +1,11 @@
-import React from 'react';
-import SinglePoem from '../components/SinglePoem';
+import React from "react";
+import SinglePoem from "../components/SinglePoem";
 function PoemsList({ data }) {
   console.log(data);
 
   return (
     <div>
-      {' '}
+      {" "}
       {data &&
         data.map(elem => (
           <SinglePoem
@@ -16,6 +16,7 @@ function PoemsList({ data }) {
             user={elem.username}
             id={elem.id}
             comments={elem.comments}
+            username={elem.username}
           />
         ))}
     </div>

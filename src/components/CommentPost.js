@@ -1,17 +1,18 @@
-import React, { useContext, useState, useRef } from 'react';
-import gql from 'graphql-tag';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { AuthContext } from '../context/auth';
+import React, { useContext, useState, useRef } from "react";
+import gql from "graphql-tag";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { AuthContext } from "../context/auth";
+import { FormTextarea } from "shards-react";
 
 const CommentPost = ({ id }) => {
   const postId = id;
   const { user } = useContext(AuthContext);
   const commentInputRef = useRef(null);
 
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
     update() {
-      setComment('');
+      setComment("");
       commentInputRef.current.blur();
     },
     variables: {
@@ -22,10 +23,10 @@ const CommentPost = ({ id }) => {
 
   return (
     <div>
-      <input
-        type='text'
-        placeholder='Comment..'
-        name='comment'
+      <FormTextarea
+        type="text"
+        placeholder="Comment.."
+        name="comment"
         value={comment}
         onChange={event => setComment(event.target.value)}
         ref={commentInputRef}
