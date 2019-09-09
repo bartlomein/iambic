@@ -8,19 +8,27 @@ const Menu = () => {
 
   return (
     <div>
-      <div onClick={()=>setMenuIsOpen(!menuIsOpen)}>MENU BUTTON</div>
+      <div onClick={() => setMenuIsOpen(!menuIsOpen)}>MENU BUTTON</div>
       <div>iambic.dev</div>
-      <Link to="/">Home</Link>
-
-      {user ? (
-        <div onClick={logout}>Logout</div>
-      ) : (
+      {menuIsOpen ? (
         <div>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          <Link to="/">Home</Link>
+
+          {user ? (
+            <div onClick={logout}>Logout</div>
+          ) : (
+            <div>
+              <div>
+                <Link to="/login">Login</Link>
+              </div>
+              <div>
+                <Link to="/register">Register</Link>
+              </div>
+            </div>
+          )}
+          <div>Contact</div>
         </div>
-      )}
-      <div>Contact</div>
+      ) : null}
     </div>
   );
 };
