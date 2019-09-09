@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth";
 
 const Menu = () => {
-  const [menuIsOpen, setMenuisOpen] = useState;
+  const [menuIsOpen, setMenuIsOpen] = useState;
   const { user, logout } = useContext(AuthContext);
 
   return (
