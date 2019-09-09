@@ -1,8 +1,8 @@
-import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import GeneratedPoemCard from './GeneratedPoemCard';
-import PoemsList from './PoemsList';
+import React from "react";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import GeneratedPoemCard from "./GeneratedPoemCard";
+import PoemsList from "./PoemsList";
 
 const Home = () => {
   const { loading, data } = useQuery(FETCH_POST_QUERY);
@@ -10,10 +10,10 @@ const Home = () => {
     console.log(data);
   }
   return (
-    <div className='home-container'>
-      <GeneratedPoemCard />
+    <div className="home-container">
+      {/* <GeneratedPoemCard />
 
-      <PoemsList data={data && data.getPosts} />
+      <PoemsList data={data && data.getPosts} /> */}
     </div>
   );
 };
