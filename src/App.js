@@ -6,12 +6,18 @@ import Register from "./containers/Register";
 import { AuthProvider } from "./context/auth";
 import AuthRoute from "./utils/AuthRoute";
 import Menu from "./components/Menu";
-import { Container } from "shards-react";
+
+
+import { Container} from "shards-react";
+
 
 const App = () => (
+  <div>
+   
   <AuthProvider>
     <Router>
       <Container>
+
         <Menu />
 
         <Route exact path="/" component={Home} />
@@ -20,6 +26,7 @@ const App = () => (
       </Container>
     </Router>
   </AuthProvider>
+</div>
 );
 
 export default App;

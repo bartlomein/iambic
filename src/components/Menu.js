@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth";
 
 const Menu = () => {
+
   const [menuIsOpen, setMenuisOpen] = useState();
   const { user } = useContext(AuthContext);
-  // const pathname = window.location.pathname;
+
+
+
   return (
     <div>
       <Link to="/">Home</Link>
