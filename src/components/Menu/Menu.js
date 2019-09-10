@@ -21,7 +21,9 @@ const Menu = () => {
         </HomeButtonContainer>
         <EndingItemsContainer>
           {user ? (
-            <div onClick={logout}>logout</div>
+            <LinkContainer>
+              <div onClick={logout}>logout</div>
+            </LinkContainer>
           ) : (
             <div style={{ display: "flex" }}>
               <LinkContainer>
