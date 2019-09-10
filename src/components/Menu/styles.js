@@ -4,8 +4,10 @@ export const MenuHeaderContainer = styled.div`
   max-width: 100%;
   width: 100%;
   justify-content: space-between;
+  align-items:center;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
+  height:80px;
 `;
 export const HomeButtonContainer = styled.div`
   justify-content: flex-start;
@@ -27,4 +29,5 @@ export const LinkContainer = styled.div`
   a:hover {
     text-decoration: none;
   }
+  
 `;
