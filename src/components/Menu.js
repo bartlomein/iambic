@@ -1,42 +1,56 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth";
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 
 const Menu = () => {
- 
   const { user, logout } = useContext(AuthContext);
 
   const MenuHeaderContainer = styled.div`
-  display:flex;
-  max-width:100%;
-  width:100%;
-
-  `
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    justify-content: space-between;
+  `;
+  const HomeButtonContainer = styled.div`
+    justify-content: flex-start;
+  `;
+  const EndingItemsContainer = styled.div`
+    justify-content: flex-end;
+    display:flex;
+  `;
+  const LinkContainer = styled.div`
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 20px;
+  `;
 
   return (
     <div>
-     
-    
-      
-        <MenuHeaderContainer>
-          <Link to="/">iambic.dev</Link>
-
+      <MenuHeaderContainer>
+        <HomeButtonContainer>
+          <LinkContainer>
+            <Link to="/">iambic.dev</Link>
+          </LinkContainer>
+        </HomeButtonContainer>
+        <EndingItemsContainer>
           {user ? (
-            <div onClick={logout}>Logout</div>
+            <div onClick={logout}>logout</div>
           ) : (
-            <div>
-              <div>
-                <Link to="/login">Login</Link>
-              </div>
-              <div>
-                <Link to="/register">Register</Link>
-              </div>
+            <div style={{display:"flex"}}>
+              <LinkContainer>
+                <Link to="/login">login</Link>
+              </LinkContainer>
+              <LinkContainer>
+                <Link to="/register">register</Link>
+              </LinkContainer>
             </div>
           )}
-          <div>Contact</div>
+          <LinkContainer>
+            <Link to="https://twitter.com/bartlomein">contact</Link>
+          </LinkContainer>
+        </EndingItemsContainer>
       </MenuHeaderContainer>
-   
     </div>
   );
 };
