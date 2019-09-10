@@ -1,18 +1,26 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth";
+import styled from '@emotion/styled'
 
 const Menu = () => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
+ 
   const { user, logout } = useContext(AuthContext);
+
+  const MenuHeaderContainer = styled.div`
+  display:flex;
+  max-width:100%;
+  width:100%;
+
+  `
 
   return (
     <div>
-      <div onClick={() => setMenuIsOpen(!menuIsOpen)}>MENU BUTTON</div>
-      <div>iambic.dev</div>
-      {menuIsOpen ? (
-        <div>
-          <Link to="/">Home</Link>
+     
+    
+      
+        <MenuHeaderContainer>
+          <Link to="/">iambic.dev</Link>
 
           {user ? (
             <div onClick={logout}>Logout</div>
@@ -27,8 +35,8 @@ const Menu = () => {
             </div>
           )}
           <div>Contact</div>
-        </div>
-      ) : null}
+      </MenuHeaderContainer>
+   
     </div>
   );
 };
