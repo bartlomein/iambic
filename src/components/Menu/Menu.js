@@ -1,29 +1,15 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/auth";
-import styled from "@emotion/styled";
+import { AuthContext } from "../../context/auth";
+import {
+  MenuHeaderContainer,
+  HomeButtonContainer,
+  EndingItemsContainer,
+  LinkContainer
+} from "./styles";
 
 const Menu = () => {
   const { user, logout } = useContext(AuthContext);
-
-  const MenuHeaderContainer = styled.div`
-    display: flex;
-    max-width: 100%;
-    width: 100%;
-    justify-content: space-between;
-  `;
-  const HomeButtonContainer = styled.div`
-    justify-content: flex-start;
-  `;
-  const EndingItemsContainer = styled.div`
-    justify-content: flex-end;
-    display:flex;
-  `;
-  const LinkContainer = styled.div`
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 20px;
-  `;
 
   return (
     <div>
@@ -37,7 +23,7 @@ const Menu = () => {
           {user ? (
             <div onClick={logout}>logout</div>
           ) : (
-            <div style={{display:"flex"}}>
+            <div style={{ display: "flex" }}>
               <LinkContainer>
                 <Link to="/login">login</Link>
               </LinkContainer>
