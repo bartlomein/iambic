@@ -17,8 +17,7 @@ const GeneratedPoemCard = () => {
   const trail = useTrail(poem && poem.poem && poem.poem.length, {
     config,
     opacity: toggle ? 1 : 0,
-    // x: toggle ? 0 : 40,
-    // height: toggle ? 40 : 0,
+
     from: { opacity: 0, x: 20 }
   });
 
