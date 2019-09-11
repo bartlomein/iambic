@@ -19,7 +19,7 @@ const Menu = () => {
             <Link to="/">iambic.dev</Link>
           </LinkContainer>
         </HomeButtonContainer>
-        <EndingItemsContainer>
+        <EndingItemsContainer className="menu-ending-items-container">
           {user ? (
             <LinkContainer>
               <div onClick={logout}>logout</div>

@@ -11,9 +11,9 @@ const Home = () => {
   }
   return (
     <div className="home-container">
-      <GeneratedPoemCard />
+      {/* <GeneratedPoemCard />
 
-      <PoemsList data={data && data.getPosts} />
+      <PoemsList data={data && data.getPosts} /> */}
     </div>
   );
 };

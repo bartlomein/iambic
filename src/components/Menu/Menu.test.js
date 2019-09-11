@@ -6,7 +6,11 @@ import { AuthContext } from "../../context/auth";
 
 const { user } = AuthContext;
 it("displays right based on if user is there", () => {
-    if (user) {
-        expect(document.querySelector("."));
-    }
+  if (user) {
+    expect(
+      document.querySelector(".menu-ending-items-container").innerHTML
+    ).toBe("logout");
+  }
 });
+
+
