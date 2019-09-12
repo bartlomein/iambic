@@ -1,5 +1,5 @@
 import React from "react";
-import SinglePoem from "../../components/SinglePoem";
+import SinglePoemCard from "../../components/SinglePoemCard";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
@@ -12,7 +12,7 @@ const PoemsList = () => {
       {data &&
         data.getPosts &&
         data.getPosts.map(elem => (
-          <SinglePoem
+          <SinglePoemCard
             title={elem.title}
             body={elem.body}
             date={elem.createdAt}
