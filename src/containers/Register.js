@@ -15,7 +15,7 @@ const Register = props => {
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(proxy, result) {
       context.login(result.data.login);
-      props.history.push('/');
+      props.history.push('/poems');
     },
     onError(err) {
       console.log(err.graphQLErrors[0].extensions.exception.errors);

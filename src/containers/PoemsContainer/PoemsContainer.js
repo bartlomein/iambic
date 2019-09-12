@@ -1,0 +1,53 @@
+import React from "react";
+import SinglePoem from "../../components/SinglePoem";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+
+const PoemsList = () => {
+  const { loading, data } = useQuery(FETCH_POST_QUERY);
+
+  return (
+    <div>
+      {" "}
+      {data &&
+        data.getPosts &&
+        data.getPosts.map(elem => (
+          <SinglePoem
+            title={elem.title}
+            body={elem.body}
+            date={elem.createdAt}
+            likes={elem.likes}
+            likeCount={elem.likeCount}
+            user={elem.username}
+            id={elem.id}
+            comments={elem.comments}
+            username={elem.username}
+          />
+        ))}
+    </div>
+  );
+};
+const FETCH_POST_QUERY = gql`
+  {
+    getPosts {
+      id
+      body
+      title
+      createdAt
+      username
+      type
+      likeCount
+      likes {
+        username
+      }
+      commentCount
+      comments {
+        id
+        username
+        createdAt
+        body
+      }
+    }
+  }
+`;
+export default PoemsList;
