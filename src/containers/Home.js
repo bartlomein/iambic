@@ -2,14 +2,12 @@ import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import GeneratedPoemCard from "./GeneratedPoemCard/GeneratedPoemCard";
+import PoemsContainer from "./PoemsContainer/PoemsContainer";
 
 const Home = () => {
-
   return (
     <div className="home-container">
-      {/* <GeneratedPoemCard />
-
-      <PoemsList data={data && data.getPosts} /> */}
+      <PoemsContainer />
     </div>
   );
 };
