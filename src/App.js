@@ -4,6 +4,7 @@ import Home from "./containers/Home";
 import Login from "./containers/Login";
 import Register from "./containers/Register";
 import PoemsContainer from "./containers/PoemsContainer/PoemsContainer";
+import SinglePoemPage from './containers/SinglePoemPage/SinglePoemPage'
 import { AuthProvider } from "./context/auth";
 import AuthRoute from "./utils/AuthRoute";
 import Menu from "./components/Menu/Menu";
@@ -18,6 +19,7 @@ const App = () => {
             <Menu />
             <Route exact path="/" component={Home} />
             <Route exact path="/poems" component={PoemsContainer} />
+            <Route exact path="/poems/:poemId" component={SinglePoemPage} />
             <AuthRoute exact path="/login" component={Login} />
             <AuthRoute exact path="/register" component={Register} />
           </Container>

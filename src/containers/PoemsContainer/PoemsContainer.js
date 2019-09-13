@@ -5,7 +5,9 @@ import gql from "graphql-tag";
 
 const PoemsList = () => {
   const { loading, data } = useQuery(FETCH_POST_QUERY);
-
+  if (data) {
+    console.log(data);
+  }
   return (
     <div>
       {" "}
