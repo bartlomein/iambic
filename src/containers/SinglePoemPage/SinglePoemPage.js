@@ -1,14 +1,14 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
-import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { AuthContext } from "../../context/auth";
+import React, { useContext, useState, useRef, useEffect } from 'react';
+import gql from 'graphql-tag';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { AuthContext } from '../../context/auth';
 
 const SinglePoemPage = props => {
   const postId = props.match.params.postId;
   const { user } = useContext(AuthContext);
   const commentInputRef = useRef(null);
 
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
 
   const {
     data: { getPost }
@@ -20,7 +20,7 @@ const SinglePoemPage = props => {
 
   const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
     update() {
-      setComment("");
+      setComment('');
       commentInputRef.current.blur();
     },
     variables: {
@@ -32,8 +32,7 @@ const SinglePoemPage = props => {
     getPost();
   });
 
-  return;
-  <div>SinglePoemPage</div>;
+  return <div>SinglePoemPage</div>;
 };
 
 export default SinglePoemPage;
