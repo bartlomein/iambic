@@ -2,6 +2,9 @@ import React, { useContext, useState, useRef } from 'react';
 import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { AuthContext } from '../../context/auth';
+import { Button, Card, CardBody } from 'shards-react';
+import SinglePoemCard from '../../components/SinglePoemCard';
+// import Like from './Like';
 
 const SinglePoemPage = props => {
   const postId = props.match.params.poemId;
@@ -16,37 +19,20 @@ const SinglePoemPage = props => {
     }
   });
 
-  // const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
-  //   update() {
-  //     setComment('');
-  //     commentInputRef.current.blur();
-  //   },
-  //   variables: {
-  //     postId,
-  //     body: comment
-  //   }
-  // });
-  // useEffect(() => {
-  //   getPost();
-  // }, []);
-  let postMarkup;
-  // if (!getPost || getPost === undefined) {
-  //   postMarkup = <p>Loading post..</p>;
-  // } else {
-  //   const {
-  //     id,
-  //     body,
-  //     createdAt,
-  //     username,
-  //     comments,
-  //     likes,
-  //     likeCount,
-  //     commentCount
-  //   } = getPost;
-
   // postMarkup = <div>{getPost.id}</div>;
   if (loading) return <p>Loading ...</p>;
-  return <h1>Hello {data.getPost.id}!</h1>;
+  return (
+    <SinglePoemCard
+      body={data.getPost.body}
+      date={data.getPost.date}
+      likes={data.getPost.likes}
+      likeCount={data.getPost.likeCount}
+      id={data.getPost.id}
+      comments={data.getPost.comments}
+      username={data.getPost.username}
+      title={data.getPost.title}
+    />
+  );
 };
 
 export default SinglePoemPage;
@@ -73,6 +59,7 @@ const FETCH_POST_QUERY = gql`
       createdAt
       username
       likeCount
+      title
       likes {
         username
       }

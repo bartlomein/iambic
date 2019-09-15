@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Card, CardBody } from 'shards-react';
+import { Link } from 'react-router-dom';
 import Like from './Like';
 import { AuthContext } from '../context/auth';
 import CommentPost from './CommentPost';
@@ -21,7 +22,9 @@ function SinglePoem({
     <div style={{ marginTop: 20 }}>
       <Card>
         <CardBody>
-          <h4>{title && title}</h4>
+          <Link to={`/poems/${id}`}>
+            <h4>{title && title}</h4>
+          </Link>
           {body.map(line => (
             <div>{line}</div>
           ))}
