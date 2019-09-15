@@ -77,7 +77,7 @@ const GeneratedPoemCard = () => {
               <>
                 <div
                   className='trails-main-poem'
-                  style={{ minHeight: 200 }}
+                  style={{ minHeight: 250 }}
                   onClick={() => set(state => state)}
                 >
                   <div>
