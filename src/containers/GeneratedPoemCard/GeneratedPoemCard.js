@@ -32,16 +32,17 @@ const GeneratedPoemCard = props => {
       const data = proxy.readQuery({
         query: FETCH_POSTS_QUERY
       });
-      data.getPosts = [result.data.createPost, ...data.getPosts];
+      // data.getPosts = [result.data.createPost]
       proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
       setPoemPostedMessage("Congratulations, your poem has been posted!");
-      
+      console.log(data);
       poem = [];
     }
   });
 
   const postPoem = props => {
     createPost(poem.poem);
+    setPoemPostedMessage('Your Poem Has Been Posted')
   };
 
   const generateNewPoem = () => {
