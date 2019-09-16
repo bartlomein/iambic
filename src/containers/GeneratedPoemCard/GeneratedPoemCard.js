@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useTrail, animated } from 'react-spring';
+import React, { useState, useEffect } from "react";
+import { useTrail, animated } from "react-spring";
 
-import { Button, Card, CardBody } from 'shards-react';
-import apiCall from '../../api';
-import gql from 'graphql-tag';
-import { useMutation } from '@apollo/react-hooks';
-import { FETCH_POSTS_QUERY } from '../../utils/graphql';
-import { GeneratedPoemCardContainer } from './styles';
+import { Button, Card, CardBody } from "shards-react";
+import apiCall from "../../api";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/react-hooks";
+import { FETCH_POSTS_QUERY } from "../../utils/graphql";
+import { GeneratedPoemCardContainer } from "./styles";
 
 const config = { mass: 1, tension: 700, friction: 500 };
 
-const GeneratedPoemCard = () => {
+const GeneratedPoemCard = ({ props }) => {
   const [poem, setPoem] = useState(null);
   const [poemPostedMessage, setPoemPostedMessage] = useState(null);
   const [toggle, set] = useState(true);
@@ -25,19 +25,26 @@ const GeneratedPoemCard = () => {
     variables: {
       title: poem && poem.title && poem.title[0],
       body: poem && poem.poem && poem.poem.length > 1 && poem.poem,
-      type: 'poem'
+      type: "poem"
     },
-    type: 'poem',
+    type: "poem",
     update(proxy, result) {
       const data = proxy.readQuery({
         query: FETCH_POSTS_QUERY
       });
       data.getPosts = [result.data.createPost, ...data.getPosts];
       proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
-      setPoemPostedMessage('Congratulations, your poem has been posted!');
+      setPoemPostedMessage("Congratulations, your poem has been posted!");
+      console.log("poem posted");
+      props.history.push("/poems");
       poem = [];
     }
   });
+
+  const postPoem = () => {
+    createPost(poem.poem);
+    props.history.push("/poems");
+  };
 
   const generateNewPoem = () => {
     setPoemPostedMessage(null);
@@ -47,7 +54,7 @@ const GeneratedPoemCard = () => {
 
   const callPoem = () => {
     const getPoem = async () => {
-      const poem = await apiCall('poetry', 4);
+      const poem = await apiCall("poetry", 4);
 
       setPoem(poem);
     };
@@ -66,8 +73,8 @@ const GeneratedPoemCard = () => {
           <CardBody>
             {poemPostedMessage ? (
               <>
-                <div>{poemPostedMessage}</div>{' '}
-                <div className='button-container'>
+                <div>{poemPostedMessage}</div>{" "}
+                <div className="button-container">
                   <Button outline onClick={generateNewPoem}>
                     Generate
                   </Button>
@@ -76,7 +83,7 @@ const GeneratedPoemCard = () => {
             ) : (
               <>
                 <div
-                  className='trails-main-poem'
+                  className="trails-main-poem"
                   style={{ minHeight: 250 }}
                   onClick={() => set(state => state)}
                 >
@@ -85,7 +92,7 @@ const GeneratedPoemCard = () => {
                     {trail.map(({ x, height, ...rest }, index) => (
                       <animated.div
                         key={poem && poem.poem && poem.poem[index]}
-                        className='trails-text'
+                        className="trails-text"
                         style={{
                           ...rest,
                           transform: x.interpolate(
@@ -103,7 +110,7 @@ const GeneratedPoemCard = () => {
                 <Button outline onClick={generateNewPoem}>
                   Generate
                 </Button>
-                <Button outline onClick={() => createPost(poem.poem)}>
+                <Button outline onClick={() => postPoem()}>
                   Create Post
                 </Button>
               </>
