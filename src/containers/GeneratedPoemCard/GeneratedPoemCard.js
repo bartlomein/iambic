@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTrail, animated } from "react-spring";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { Button, Card, CardBody } from "shards-react";
 import apiCall from "../../api";
 import gql from "graphql-tag";
@@ -35,8 +35,7 @@ const GeneratedPoemCard = props => {
       data.getPosts = [result.data.createPost, ...data.getPosts];
       proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
       setPoemPostedMessage("Congratulations, your poem has been posted!");
-      console.log("poem posted");
-      props.history.push("/poems");
+      
       poem = [];
     }
   });
@@ -147,4 +146,4 @@ const CREATE_POST_MUTATION = gql`
     }
   }
 `;
-export default GeneratedPoemCard;
+export default withRouter(GeneratedPoemCard);
