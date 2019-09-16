@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTrail, animated } from "react-spring";
-
+import { Redirect } from "react-router-dom";
 import { Button, Card, CardBody } from "shards-react";
 import apiCall from "../../api";
 import gql from "graphql-tag";
@@ -10,7 +10,7 @@ import { GeneratedPoemCardContainer } from "./styles";
 
 const config = { mass: 1, tension: 700, friction: 500 };
 
-const GeneratedPoemCard = ({ props }) => {
+const GeneratedPoemCard = props => {
   const [poem, setPoem] = useState(null);
   const [poemPostedMessage, setPoemPostedMessage] = useState(null);
   const [toggle, set] = useState(true);
@@ -41,9 +41,8 @@ const GeneratedPoemCard = ({ props }) => {
     }
   });
 
-  const postPoem = () => {
+  const postPoem = props => {
     createPost(poem.poem);
-    props.history.push("/poems");
   };
 
   const generateNewPoem = () => {
