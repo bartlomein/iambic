@@ -1,4 +1,4 @@
-[Iambic.dev](https://iambic.dev)
+
 
 ## Vote and admire AI generated poety
 
