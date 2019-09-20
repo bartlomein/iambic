@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useTrail, animated } from "react-spring";
 import { withRouter } from "react-router-dom";
 import { Button, Card, CardBody } from "shards-react";
 import apiCall from "../../api";
 import gql from "graphql-tag";
+import { AuthContext } from "../../context/auth";
 import { useMutation } from "@apollo/react-hooks";
 import { FETCH_POSTS_QUERY } from "../../utils/graphql";
 import { GeneratedPoemCardContainer } from "./styles";
@@ -11,6 +12,7 @@ import { GeneratedPoemCardContainer } from "./styles";
 const config = { mass: 1, tension: 700, friction: 500 };
 
 const GeneratedPoemCard = props => {
+  const { user } = useContext(AuthContext);
   const [poem, setPoem] = useState(null);
   const [poemPostedMessage, setPoemPostedMessage] = useState(null);
   const [toggle, set] = useState(true);
@@ -42,7 +44,7 @@ const GeneratedPoemCard = props => {
 
   const postPoem = props => {
     createPost(poem.poem);
-    setPoemPostedMessage('Your Poem Has Been Posted')
+    setPoemPostedMessage("Your Poem Has Been Posted");
   };
 
   const generateNewPoem = () => {
@@ -109,9 +111,11 @@ const GeneratedPoemCard = props => {
                 <Button outline onClick={generateNewPoem}>
                   Generate
                 </Button>
-                <Button outline onClick={() => postPoem()}>
-                  Create Post
-                </Button>
+                {user && (
+                  <Button outline onClick={() => postPoem()}>
+                    Create Post
+                  </Button>
+                )}
               </>
             )}
           </CardBody>
