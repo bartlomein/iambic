@@ -11,8 +11,8 @@ const icon = {
   },
   visible: {
     opacity: 1,
-    pathLength: 0.5,
-    pathOffset: 12,
+    pathLength: 1111,
+    pathOffset: 60000,
     pathSpacing: 1212
   }
 };
