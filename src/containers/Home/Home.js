@@ -1,16 +1,18 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import GeneratedPoemCard from './GeneratedPoemCard/GeneratedPoemCard';
-import PoemsContainer from './PoemsContainer/PoemsContainer';
+import GeneratedPoemCard from '../GeneratedPoemCard/GeneratedPoemCard';
+import PoemsContainer from '../PoemsContainer/PoemsContainer';
+import { HomeContainer } from './styles';
+import Flower from '../../components/Flower/Flower';
 
-const Home = () => {
+const Home = props => {
   return (
-    <div className='home-container'>
+    <HomeContainer>
       {/* <PoemsContainer /> */}
-
-      <GeneratedPoemCard />
-    </div>
+      <Flower />
+      <GeneratedPoemCard setGeneratedPoem={props.setGeneratedPoem} />
+    </HomeContainer>
   );
 };
 
