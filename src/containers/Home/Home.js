@@ -1,17 +1,19 @@
-import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import GeneratedPoemCard from '../GeneratedPoemCard/GeneratedPoemCard';
-import PoemsContainer from '../PoemsContainer/PoemsContainer';
-import { HomeContainer } from './styles';
-import Flower from '../../components/Flower/Flower';
-import WelcomeCard from '../../components/WelcomeCard/WelcomeCard';
-import SecondFlower from '../../components/SecondFlower';
+import React from "react";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import GeneratedPoemCard from "../GeneratedPoemCard/GeneratedPoemCard";
+import PoemsContainer from "../PoemsContainer/PoemsContainer";
+import { HomeContainer, TopLeftTriangle, TopRightTriangle } from "./styles";
+import Flower from "../../components/Flower/Flower";
+import WelcomeCard from "../../components/WelcomeCard/WelcomeCard";
+import SecondFlower from "../../components/SecondFlower";
 
 const Home = props => {
   return (
     <HomeContainer>
       {/* <PoemsContainer /> */}
+      <TopLeftTriangle />
+      <TopRightTriangle />
       <Flower />
       <GeneratedPoemCard setGeneratedPoem={props.setGeneratedPoem} />
       <WelcomeCard />
