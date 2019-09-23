@@ -16,12 +16,12 @@ export const TopLeftTriangle = styled.div`
   background: -webkit-linear-gradient(
     to right,
     #ff6a00,
-    #ee0979
+    #fff
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
     #ff6a00,
-    #ee0979
+    #fff
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   position: absolute;
@@ -30,8 +30,9 @@ export const TopLeftTriangle = styled.div`
 `;
 
 export const TopRightTriangle = styled.div`
-  width: 50%;
+  width: 100%;
   height: 50%;
+  opacity: 0.7;
   overflow: hidden;
   -webkit-transform: skewY(21deg);
   transform: skewY(21deg);
@@ -41,17 +42,17 @@ export const TopRightTriangle = styled.div`
   background: -webkit-linear-gradient(
     to right,
     #f15f79,
-    #b24592
+    #fff
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
     #f15f79,
-    #b24592
+    #fff
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 50px;
 
   position: absolute;
   z-index: -1;
-  left: 10%;
+  opacity: 0.6;
   top: 20%;
 `;
