@@ -5,6 +5,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #ffe000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #799f0c,
+    #ffe000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #799f0c,
+    #ffe000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 code {
@@ -12,7 +23,7 @@ code {
     monospace;
 }
 .card {
-  background: rgba(250, 250, 250, 0.4) !important;
+  background: rgba(250, 250, 250, 0.8) !important;
 }
 .home-container {
   margin: 0 auto;
