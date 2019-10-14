@@ -1,13 +1,15 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 export const MenuHeaderContainer = styled.div`
   display: flex;
   max-width: 100%;
   width: 100%;
   justify-content: space-between;
-  align-items:center;
-  font-family: "Open Sans", sans-serif;
+  align-items: center;
+  font-family: 'Galada', cursive;
+
   font-weight: 600;
-  height:80px;
+  height: 80px;
+  z-index: 999;
 `;
 export const HomeButtonContainer = styled.div`
   justify-content: flex-start;
@@ -17,17 +19,16 @@ export const EndingItemsContainer = styled.div`
   display: flex;
 `;
 export const LinkContainer = styled.div`
-  padding-left: 5px;
-  padding-right: 5px;
-  font-size: 22px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 40px;
   a,
   div {
-    color: blue;
+    color: #ff6f59;
     cursor: pointer;
   }
 
   a:hover {
     text-decoration: none;
   }
-  
 `;

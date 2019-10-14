@@ -8,7 +8,7 @@ import {
   TopLeftTriangle,
   TopRightTriangle,
   RightTriangle
-} from './styles';
+} from './HomeStyles';
 import Flower from '../../components/Flower/Flower';
 import WelcomeCard from '../../components/WelcomeCard/WelcomeCard';
 // import SecondFlower from '../../components/SecondFlower';
