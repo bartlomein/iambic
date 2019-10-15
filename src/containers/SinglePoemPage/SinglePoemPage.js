@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { AuthContext } from '../../context/auth';
 import { Button, Card, CardBody } from 'shards-react';
-import SinglePoemCard from '../../components/SinglePoemCard';
+import SinglePoemCard from '../../components/SinglePoemCard/SinglePoemCard';
 // import Like from './Like';
 
 const SinglePoemPage = props => {

@@ -21,14 +21,18 @@ export const EndingItemsContainer = styled.div`
 export const LinkContainer = styled.div`
   padding-left: 10px;
   padding-right: 10px;
-  font-size: 40px;
+  font-size: 50px;
   a,
   div {
-    color: #ff6f59;
+    color: #3f88c5;
     cursor: pointer;
+    transition: 0.5s;
   }
 
   a:hover {
     text-decoration: none;
+
+    color: #2fe6df;
+    transition: 0.5s;
   }
 `;

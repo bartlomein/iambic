@@ -1,7 +1,7 @@
-import React from "react";
-import SinglePoemCard from "../../components/SinglePoemCard";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import React from 'react';
+import SinglePoemCard from '../../components/SinglePoemCard/SinglePoemCard';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 const PoemsList = () => {
   const { loading, data } = useQuery(FETCH_POST_QUERY);
@@ -10,7 +10,7 @@ const PoemsList = () => {
   }
   return (
     <div>
-      {" "}
+      {' '}
       {data &&
         data.getPosts &&
         data.getPosts.map(elem => (
