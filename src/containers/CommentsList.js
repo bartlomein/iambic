@@ -1,10 +1,11 @@
 import React from 'react';
-import SingleComment from '../components/SingleComment';
+import SingleComment from '../components/SingleComment/SingleComment';
 
 const CommentsList = ({ comments }) => {
   return (
     <div>
-      {comments && comments.map(comment => <SingleComment comment={comment} />)}
+      {comments &&
+        comments.reverse().map(comment => <SingleComment comment={comment} />)}
     </div>
   );
 };

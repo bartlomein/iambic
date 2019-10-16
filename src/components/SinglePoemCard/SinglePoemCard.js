@@ -18,19 +18,32 @@ function SinglePoemCard({
   title
 }) {
   const { user } = useContext(AuthContext);
-  console.log(title);
+  const singlePoemContainerProps = {
+    backgroundImage:
+      'radial-gradient( circle 274px at 7.4% 17.9%,  rgba(82,107,248,1) 0.3%, rgba(167,139,252,1) 90.5%'
+  };
+
   return (
     <SinglePoemContainer>
       <div style={{ marginTop: 20 }}>
         <Card>
           <CardBody>
             <Link to={`/poems/${id}`}>
-              <h4>{title && title}</h4>
+              <h3>{title && title}</h3>
             </Link>
             {body.map(line => (
-              <div>{line}</div>
+              <div style={{ fontSize: 22 }}>{line}</div>
             ))}
-            <div style={{ textAlign: 'right' }}>{username}</div>
+            <div
+              style={{
+                textAlign: 'right',
+                fontSize: 16,
+                fontStyle: 'italic',
+                marginRight: 30
+              }}
+            >
+              {' - '} {username}
+            </div>
             <Like user={user} id={id} likeCount={likeCount} likes={likes} />
             <CommentList comments={comments} />
 

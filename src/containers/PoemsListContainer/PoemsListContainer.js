@@ -2,14 +2,20 @@ import React from 'react';
 import SinglePoemCard from '../../components/SinglePoemCard/SinglePoemCard';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import { PoemsListStyleContainer } from './PoemsListContainerStyles';
 
 const PoemsList = () => {
-  const { loading, data } = useQuery(FETCH_POST_QUERY);
+  const { loading, data } = useQuery(FETCH_POST_QUERY, {
+    variables: {
+      offset: 0,
+      limit: 10
+    }
+  });
   if (data) {
     console.log(data);
   }
   return (
-    <div>
+    <PoemsListStyleContainer>
       {' '}
       {data &&
         data.getPosts &&
@@ -26,7 +32,7 @@ const PoemsList = () => {
             username={elem.username}
           />
         ))}
-    </div>
+    </PoemsListStyleContainer>
   );
 };
 const FETCH_POST_QUERY = gql`

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './containers/Home/Home';
 import Login from './containers/Login';
 import Register from './containers/Register';
-import PoemsContainer from './containers/PoemsContainer/PoemsContainer';
+import PoemsContainer from './containers/PoemsListContainer/PoemsListContainer';
 import SinglePoemPage from './containers/SinglePoemPage/SinglePoemPage';
 import { AuthProvider } from './context/auth';
 import AuthRoute from './utils/AuthRoute';
