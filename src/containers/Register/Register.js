@@ -14,7 +14,6 @@ const Register = props => {
     passwordsDontMatch: false,
     duplicateEmail: false
   });
-  const [usernameTaken, setUsernameTaken] = useState(false);
 
   const [values, setValues] = useState({
     username: "",
@@ -25,28 +24,27 @@ const Register = props => {
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(proxy, result) {
-      context.login(result.data.login);
-      console.log("poppin2");
-      checkForRegisterErrors(result);
+      context.login(result.data.register);
+
       props.history.push("/poems");
     },
     onError(err) {
+      console.log("error");
       console.log(err.graphQLErrors[0].extensions.exception.errors);
+      console.log(err);
 
       checkForRegisterErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
     variables: values
   });
 
-  const checkForRegisterErrors = error => {
+  function checkForRegisterErrors(error) {
     console.log("poppin");
     if (error.username === "This username is taken") {
       console.log("This username is taken yo");
-
-      setUsernameTaken(true);
-      console.log(registerErrors);
+      setRegisterErrors({ ...registerErrors, usernameTaken: true });
     }
-  };
+  }
 
   const onChange = e =>
     setValues({ ...values, [e.target.name]: e.target.value });
