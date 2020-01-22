@@ -100,7 +100,8 @@ const GeneratedPoemCard = (props: RouterProps) => {
                 >
                   <div>
                     <h3>
-                      {// @ts-ignore
+                      {
+                        // @ts-ignore
                       poem && poem.title && poem.title}
                     </h3>
                     {// @ts-ignore
@@ -117,7 +118,8 @@ const GeneratedPoemCard = (props: RouterProps) => {
                         }}
                       >
                         <animated.div style={{ height }}>
-                          {// @ts-ignore-next-line
+                          {
+                            // @ts-ignore-next-line
                           poem && poem?.poem && poem?.poem?[index]}
                         </animated.div>
                       </animated.div>
