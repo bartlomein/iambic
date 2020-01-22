@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import Login from "./containers/Login/Login";
-import Register from "./containers/Register";
+import Register from "./containers/Register/Register";
 import PoemsContainer from "./containers/PoemsListContainer/PoemsListContainer";
 import SinglePoemPage from "./containers/SinglePoemPage/SinglePoemPage";
 import { AuthProvider } from "./context/auth";
