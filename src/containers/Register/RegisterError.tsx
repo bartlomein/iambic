@@ -8,15 +8,14 @@ import { Card, CardBody } from "shards-react";
 import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
 import { RegisterContainer, RegisterCardContainer } from "./RegisterStyles";
+import { RouterProps } from "../../utils/Interfaces/Router";
+import { RegisterError } from "../../utils/Interfaces/RegisterError";
 
-type props = {};
-
-const Register = (props: any) => {
-  console.log(props);
+const Register = (props: RouterProps) => {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
   const [registerErrors, setRegisterErrors] = useState({
-    usernameTaken: false,
+    duplicateUsername: false,
     passwordsDontMatch: false,
     duplicateEmail: false
   });
@@ -46,20 +45,18 @@ const Register = (props: any) => {
     variables: values
   });
 
-  function checkForRegisterErrors(error: any) {
+  function checkForRegisterErrors(error: RegisterError) {
+    console.log(error);
     console.log("poppin");
     if (error.username === "This username is taken") {
-      console.log("This username is taken yo");
-      setRegisterErrors({ ...registerErrors, usernameTaken: true });
+      setRegisterErrors({ ...registerErrors, duplicateUsername: true });
     }
   }
 
   const onChange = (e: any) => {
-    console.log(e);
     setValues({ ...values, [e.target.name]: e.target.value });
   };
   const onSubmit = (e: any) => {
-    console.log(e);
     e.preventDefault();
     addUser();
   };
@@ -83,7 +80,7 @@ const Register = (props: any) => {
                   name="username"
                   value={values.username}
                   onChange={onChange}
-                  invalid={errors.username ? true : false}
+                  invalid={registerErrors.duplicateUsername ? true : false}
                 />
               </FormGroup>
               <FormGroup>
@@ -95,7 +92,7 @@ const Register = (props: any) => {
                   name="email"
                   value={values.email}
                   onChange={onChange}
-                  invalid={errors.email ? true : false}
+                  invalid={registerErrors.duplicateEmail ? true : false}
                 />
               </FormGroup>
               <FormGroup>
@@ -107,7 +104,7 @@ const Register = (props: any) => {
                   name="password"
                   value={values.password}
                   onChange={onChange}
-                  invalid={errors.confirmPassword ? true : false}
+                  invalid={registerErrors.passwordsDontMatch ? true : false}
                 />
               </FormGroup>
               <FormGroup>
@@ -119,7 +116,7 @@ const Register = (props: any) => {
                   name="confirmPassword"
                   value={values.confirmPassword}
                   onChange={onChange}
-                  invalid={errors.confirmPassword ? true : false}
+                  invalid={registerErrors.passwordsDontMatch ? true : false}
                 />
               </FormGroup>
               <Button type="submit" outline>
