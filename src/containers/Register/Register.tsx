@@ -1,12 +1,18 @@
+// @ts-ignore
 import React, { useState, useContext } from "react";
+// @ts-ignore
 import { Button, Form, FormInput, FormGroup } from "shards-react";
 import gql from "graphql-tag";
+// @ts-ignore
 import { Card, CardBody } from "shards-react";
 import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
 import { RegisterContainer, RegisterCardContainer } from "./RegisterStyles";
 
-const Register = props => {
+type props = {};
+
+const Register = (props: any) => {
+  console.log(props);
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
   const [registerErrors, setRegisterErrors] = useState({
@@ -30,15 +36,17 @@ const Register = props => {
     },
     onError(err) {
       console.log("error");
-      console.log(err.graphQLErrors[0].extensions.exception.errors);
+
       console.log(err);
 
-      checkForRegisterErrors(err.graphQLErrors[0].extensions.exception.errors);
+      checkForRegisterErrors(
+        err?.graphQLErrors[0]?.extensions?.exception?.errors
+      );
     },
     variables: values
   });
 
-  function checkForRegisterErrors(error) {
+  function checkForRegisterErrors(error: any) {
     console.log("poppin");
     if (error.username === "This username is taken") {
       console.log("This username is taken yo");
@@ -46,9 +54,12 @@ const Register = props => {
     }
   }
 
-  const onChange = e =>
+  const onChange = (e: any) => {
+    console.log(e);
     setValues({ ...values, [e.target.name]: e.target.value });
-  const onSubmit = e => {
+  };
+  const onSubmit = (e: any) => {
+    console.log(e);
     e.preventDefault();
     addUser();
   };
