@@ -1,14 +1,19 @@
 import React, { useContext, useState } from "react";
+// @ts-ignore
 import { Button, Form, FormInput, FormGroup } from "shards-react";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
+// @ts-ignore
 import { Card, CardBody } from "shards-react";
 import { LoginContainer, LoginCardContainer } from "./LoginStyles";
+import { RouterProps } from "../../utils/Interfaces/Router";
 
-const Login = props => {
+const Login = (props: RouterProps) => {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
+  const [isWrongPassword, setIsWrongPassword] = useState(false);
+  const [userNotFound, setUserNotFound] = useState(false);
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -22,14 +27,14 @@ const Login = props => {
       props.history.push("/poems");
     },
     onError(err) {
-      console.log(err.graphQLErrors[0].extensions.exception.errors);
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      console.log(err?.graphQLErrors[0]?.extensions?.exception?.errors);
+      setErrors(err?.graphQLErrors[0]?.extensions?.exception?.errors);
     },
     variables: values
   });
-  const onChange = e =>
+  const onChange = (e: any) =>
     setValues({ ...values, [e.target.name]: e.target.value });
-  const onSubmit = e => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
     loginUser();
   };
@@ -53,7 +58,6 @@ const Login = props => {
                   name="username"
                   value={values.username}
                   onChange={onChange}
-                  invalid={errors.username ? true : false}
                 />
               </FormGroup>
 
@@ -66,7 +70,6 @@ const Login = props => {
                   name="password"
                   value={values.password}
                   onChange={onChange}
-                  invalid={errors.confirmPassword ? true : false}
                 />
               </FormGroup>
 

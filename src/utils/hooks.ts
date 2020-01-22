@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-export const useForm = (callback, initialState = {}) => {
+export const useForm = (callback: () => void, initialState = {}) => {
   const [values, setValues] = useState(initialState);
 
-  const onChange = event => {
+  const onChange = (event: any) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  const onSubmit = event => {
+  const onSubmit = (event: any) => {
     event.preventDefault();
     callback();
   };
