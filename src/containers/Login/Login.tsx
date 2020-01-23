@@ -6,7 +6,12 @@ import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
 // @ts-ignore
 import { Card, CardBody } from "shards-react";
-import { LoginContainer, LoginCardContainer } from "./LoginStyles";
+import {
+  LoginContainer,
+  LoginCardContainer,
+  WrongPasswordDiv,
+  UserNotFoundDiv
+} from "./LoginStyles";
 import { RouterProps } from "../../utils/Interfaces/Router";
 
 const Login = (props: RouterProps) => {
@@ -28,10 +33,20 @@ const Login = (props: RouterProps) => {
     },
     onError(err) {
       console.log(err?.graphQLErrors[0]?.extensions?.exception?.errors);
+      checkForLoginErrors(err?.graphQLErrors[0]?.extensions?.exception?.errors);
       setErrors(err?.graphQLErrors[0]?.extensions?.exception?.errors);
     },
     variables: values
   });
+
+  function checkForLoginErrors(error: any) {
+    if (error?.general === "Wrong crendetials") {
+      setIsWrongPassword(true);
+    } else if (error?.general === "User not found") {
+      setUserNotFound(true);
+    }
+  }
+
   const onChange = (e: any) =>
     setValues({ ...values, [e.target.name]: e.target.value });
   const onSubmit = (e: any) => {
@@ -59,6 +74,9 @@ const Login = (props: RouterProps) => {
                   value={values.username}
                   onChange={onChange}
                 />
+                {userNotFound && (
+                  <UserNotFoundDiv>User not found</UserNotFoundDiv>
+                )}
               </FormGroup>
 
               <FormGroup>
@@ -71,6 +89,9 @@ const Login = (props: RouterProps) => {
                   value={values.password}
                   onChange={onChange}
                 />
+                {isWrongPassword && (
+                  <WrongPasswordDiv>Wrong password, try again</WrongPasswordDiv>
+                )}
               </FormGroup>
 
               <Button type="submit" outline>

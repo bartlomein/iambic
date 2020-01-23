@@ -8,3 +8,6 @@ export const LoginCardContainer = styled.div`
   width: 60%;
   margin-top: 20px;
 `;
+
+export const WrongPasswordDiv = styled.div``;
+export const UserNotFoundDiv = styled.div``;
