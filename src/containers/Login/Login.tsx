@@ -32,7 +32,7 @@ const Login = (props: RouterProps) => {
       props.history.push("/poems");
     },
     onError(err) {
-      console.log(err?.graphQLErrors[0]?.extensions?.exception?.errors);
+      console.log(err);
       checkForLoginErrors(err?.graphQLErrors[0]?.extensions?.exception?.errors);
       setErrors(err?.graphQLErrors[0]?.extensions?.exception?.errors);
     },

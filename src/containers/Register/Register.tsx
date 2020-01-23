@@ -46,7 +46,7 @@ const Register = (props: RouterProps) => {
   });
 
   function checkForRegisterErrors(error: RegisterError) {
-    if (error.username === "This username is taken") {
+    if (error?.username === "This username is taken") {
       setRegisterErrors({ ...registerErrors, duplicateUsername: true });
     }
   }

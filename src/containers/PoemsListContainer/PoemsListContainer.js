@@ -1,11 +1,11 @@
-import React from 'react';
-import SinglePoemCard from '../../components/SinglePoemCard/SinglePoemCard';
-import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import { PoemsListStyleContainer } from './PoemsListContainerStyles';
+import React from "react";
+import SinglePoemCard from "../../components/SinglePoemCard/SinglePoemCard";
+import { useQuery } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import { PoemsListStyleContainer } from "./PoemsListContainerStyles";
 
 const PoemsList = () => {
-  const { loading, data } = useQuery(FETCH_POST_QUERY, {
+  const { loading, data } = useQuery(FETCH_POST_QUERY_SORTED, {
     variables: {
       offset: 0,
       limit: 10
@@ -16,7 +16,7 @@ const PoemsList = () => {
   }
   return (
     <PoemsListStyleContainer>
-      {' '}
+      {" "}
       {data &&
         data.getPosts &&
         data.getPosts.map(elem => (
@@ -58,4 +58,29 @@ const FETCH_POST_QUERY = gql`
     }
   }
 `;
+
+const FETCH_POST_QUERY_SORTED = gql`
+  {
+    getPostsSorted {
+      id
+      body
+      title
+      createdAt
+      username
+      type
+      likeCount
+      likes {
+        username
+      }
+      commentCount
+      comments {
+        id
+        username
+        createdAt
+        body
+      }
+    }
+  }
+`;
+
 export default PoemsList;
