@@ -5,16 +5,26 @@ type Props = {
   handleSortBy: (sortName: string) => void;
   buttonName: string;
   sortName: string;
+  setSelectedQueryName: (sortName: string) => void;
+  isActive: boolean;
 };
 
 export const PoemsSortButton = ({
   handleSortBy,
   buttonName,
-  sortName
+  sortName,
+  setSelectedQueryName,
+  isActive
 }: Props) => {
   return (
     <SortButtonContainer>
-      <SortButton onClick={() => handleSortBy(sortName)}>
+      <SortButton
+        onClick={() => {
+          handleSortBy(sortName);
+          setSelectedQueryName(buttonName);
+        }}
+        isActive={isActive ? "red" : "white"}
+      >
         {buttonName}
       </SortButton>
     </SortButtonContainer>

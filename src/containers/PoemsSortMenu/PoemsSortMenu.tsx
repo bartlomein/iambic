@@ -1,23 +1,38 @@
 import React from "react";
 import { PoemsSortButton } from "../../components/PoemsSortButton/PoemsSortButton";
-import { SortMenuContainer } from "./PoemsSortMenuStyles";
+import {
+  SortMenuContainer,
+  SortMenuTitle,
+  SortMenuListContainer
+} from "./PoemsSortMenuStyles";
 
 import { sortMenuList } from "../../utils/sortMenuButtonList";
 
 type Props = {
   handleSortBy: () => void;
+  setSelectedQueryName: () => void;
+  selectedQueryName: string;
 };
 
-export const PoemsSortMenu = ({ handleSortBy }: Props) => {
+export const PoemsSortMenu = ({
+  handleSortBy,
+  setSelectedQueryName,
+  selectedQueryName
+}: Props) => {
   return (
     <SortMenuContainer className="sort-menu-container">
-      {sortMenuList.map(item => (
-        <PoemsSortButton
-          buttonName={item.buttonName}
-          sortName={item.sortName}
-          handleSortBy={handleSortBy}
-        />
-      ))}
+      <SortMenuTitle>Sort By:</SortMenuTitle>
+      <SortMenuListContainer>
+        {sortMenuList.map(item => (
+          <PoemsSortButton
+            buttonName={item.buttonName}
+            sortName={item.sortName}
+            handleSortBy={handleSortBy}
+            setSelectedQueryName={setSelectedQueryName}
+            isActive={selectedQueryName === item.buttonName ? true : false}
+          />
+        ))}
+      </SortMenuListContainer>
     </SortMenuContainer>
   );
 };

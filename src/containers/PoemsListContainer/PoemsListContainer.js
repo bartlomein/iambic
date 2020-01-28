@@ -7,6 +7,7 @@ import { PoemsListStyleContainer } from "./PoemsListContainerStyles";
 import { PoemsSortMenu } from "../PoemsSortMenu/PoemsSortMenu";
 const PoemsList = () => {
   const [selectedQuery, setSelectedQuery] = useState(FETCH_POST_QUERY);
+  const [selectedQueryName, setSelectedQueryName] = useState("Most Recent");
 
   const { loading, data } = useQuery(selectedQuery, {
     variables: {
@@ -21,7 +22,11 @@ const PoemsList = () => {
   return (
     <PoemsListStyleContainer>
       {" "}
-      <PoemsSortMenu handleSortBy={setSelectedQuery} />
+      <PoemsSortMenu
+        handleSortBy={setSelectedQuery}
+        setSelectedQueryName={setSelectedQueryName}
+        selectedQueryName={selectedQueryName}
+      />
       {/* All Posts Sorted by Likes*/}
       {data &&
         data.getPostsSorted &&
