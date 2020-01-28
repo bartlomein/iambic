@@ -45,7 +45,7 @@ function SinglePoemCard({
               {" - "} {username}
             </div>
             <Like user={user} id={id} likesCount={likesCount} likes={likes} />
-            <CommentList comments={comments} />
+            <CommentList comments={comments} postId={id} />
 
             <CommentPost id={id} />
           </CardBody>
