@@ -28,28 +28,4 @@ const Home = props => {
   );
 };
 
-const FETCH_POST_QUERY = gql`
-  {
-    getPosts {
-      id
-      body
-      title
-      createdAt
-      username
-      type
-      likeCount
-      likes {
-        username
-      }
-      commentCount
-      comments {
-        id
-        username
-        createdAt
-        body
-      }
-    }
-  }
-`;
-
 export default Home;
