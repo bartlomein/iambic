@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import { Button } from 'shards-react';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import { Button } from "shards-react";
 
-const Like = ({ user, id, likeCount, likes }) => {
+const Like = ({ user, id, likesCount, likes }) => {
   const [liked, setLiked] = useState(false);
   useEffect(() => {
     if (user && likes.find(like => like.username === user.username)) {
@@ -17,11 +17,11 @@ const Like = ({ user, id, likeCount, likes }) => {
   });
   return (
     <div>
-      {likeCount}
+      {likesCount}
       {!user ? (
-        'Please Login or Register to like this poem '
+        "Please Login or Register to like this poem "
       ) : (
-        <Button onClick={likePost}> {!liked ? 'Like Post' : 'unlike'}</Button>
+        <Button onClick={likePost}> {!liked ? "Like Post" : "unlike"}</Button>
       )}
     </div>
   );
@@ -35,7 +35,7 @@ const LIKE_POST_MUTATION = gql`
         id
         username
       }
-      likeCount
+      likesCount
     }
   }
 `;

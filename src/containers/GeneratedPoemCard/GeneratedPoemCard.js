@@ -140,14 +140,14 @@ const CREATE_POST_MUTATION = gql`
         username
         createdAt
       }
-      likeCount
+      likesCount
       comments {
         id
         body
         username
         createdAt
       }
-      commentCount
+      commentsCount
     }
   }
 `;

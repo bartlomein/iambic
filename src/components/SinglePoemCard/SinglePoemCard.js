@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
-import { Button, Card, CardBody } from 'shards-react';
-import { Link } from 'react-router-dom';
-import Like from '../Like';
-import { AuthContext } from '../../context/auth';
-import CommentPost from '../CommentPost';
-import CommentList from '../../containers/CommentsList';
-import { SinglePoemContainer } from './SinglePoemCardStyles';
+import React, { useContext } from "react";
+import { Button, Card, CardBody } from "shards-react";
+import { Link } from "react-router-dom";
+import Like from "../Like";
+import { AuthContext } from "../../context/auth";
+import CommentPost from "../CommentPost";
+import CommentList from "../../containers/CommentsList";
+import { SinglePoemContainer } from "./SinglePoemCardStyles";
 
 function SinglePoemCard({
   body,
   date,
   likes,
-  likeCount,
+  likesCount,
   id,
   comments,
   username,
@@ -20,7 +20,7 @@ function SinglePoemCard({
   const { user } = useContext(AuthContext);
   const singlePoemContainerProps = {
     backgroundImage:
-      'radial-gradient( circle 274px at 7.4% 17.9%,  rgba(82,107,248,1) 0.3%, rgba(167,139,252,1) 90.5%'
+      "radial-gradient( circle 274px at 7.4% 17.9%,  rgba(82,107,248,1) 0.3%, rgba(167,139,252,1) 90.5%"
   };
 
   return (
@@ -36,15 +36,15 @@ function SinglePoemCard({
             ))}
             <div
               style={{
-                textAlign: 'right',
+                textAlign: "right",
                 fontSize: 16,
-                fontStyle: 'italic',
+                fontStyle: "italic",
                 marginRight: 30
               }}
             >
-              {' - '} {username}
+              {" - "} {username}
             </div>
-            <Like user={user} id={id} likeCount={likeCount} likes={likes} />
+            <Like user={user} id={id} likesCount={likesCount} likes={likes} />
             <CommentList comments={comments} />
 
             <CommentPost id={id} />

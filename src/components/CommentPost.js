@@ -45,7 +45,7 @@ const SUBMIT_COMMENT_MUTATION = gql`
         createdAt
         username
       }
-      commentCount
+      commentsCount
     }
   }
 `;

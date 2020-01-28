@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const FETCH_POSTS_QUERY = gql`
   {
@@ -7,11 +7,11 @@ export const FETCH_POSTS_QUERY = gql`
       body
       createdAt
       username
-      likeCount
+      likesCount
       likes {
         username
       }
-      commentCount
+      commentsCount
       comments {
         id
         username

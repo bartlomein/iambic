@@ -29,14 +29,14 @@ const PoemsList = () => {
       />
       {/* All Posts Sorted by Likes*/}
       {data &&
-        data.getPostsSorted &&
-        data.getPostsSorted.map(elem => (
+        data.getPostsSortedByLikes &&
+        data.getPostsSortedByLikes.map(elem => (
           <SinglePoemCard
             title={elem.title}
             body={elem.body}
             date={elem.createdAt}
             likes={elem.likes}
-            likeCount={elem.likeCount}
+            likesCount={elem.likesCount}
             user={elem.username}
             id={elem.id}
             comments={elem.comments}
@@ -52,7 +52,23 @@ const PoemsList = () => {
             body={elem.body}
             date={elem.createdAt}
             likes={elem.likes}
-            likeCount={elem.likeCount}
+            likesCount={elem.likesCount}
+            user={elem.username}
+            id={elem.id}
+            comments={elem.comments}
+            username={elem.username}
+          />
+        ))}
+      {/*All posts sorted by amount of comments*/}
+      {data &&
+        data.getPostsSortedByComments &&
+        data.getPostsSortedByComments.map(elem => (
+          <SinglePoemCard
+            title={elem.title}
+            body={elem.body}
+            date={elem.createdAt}
+            likes={elem.likes}
+            likesCount={elem.likesCount}
             user={elem.username}
             id={elem.id}
             comments={elem.comments}
@@ -71,11 +87,11 @@ const FETCH_POST_QUERY = gql`
       createdAt
       username
       type
-      likeCount
+      likesCount
       likes {
         username
       }
-      commentCount
+      commentsCount
       comments {
         id
         username

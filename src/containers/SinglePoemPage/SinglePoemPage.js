@@ -1,9 +1,9 @@
-import React, { useContext, useState, useRef } from 'react';
-import gql from 'graphql-tag';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { AuthContext } from '../../context/auth';
-import { Button, Card, CardBody } from 'shards-react';
-import SinglePoemCard from '../../components/SinglePoemCard/SinglePoemCard';
+import React, { useContext, useState, useRef } from "react";
+import gql from "graphql-tag";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { AuthContext } from "../../context/auth";
+import { Button, Card, CardBody } from "shards-react";
+import SinglePoemCard from "../../components/SinglePoemCard/SinglePoemCard";
 // import Like from './Like';
 
 const SinglePoemPage = props => {
@@ -11,7 +11,7 @@ const SinglePoemPage = props => {
   const { user } = useContext(AuthContext);
   const commentInputRef = useRef(null);
 
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
 
   const { loading, data } = useQuery(FETCH_POST_QUERY, {
     variables: {
@@ -26,7 +26,7 @@ const SinglePoemPage = props => {
       body={data.getPost.body}
       date={data.getPost.date}
       likes={data.getPost.likes}
-      likeCount={data.getPost.likeCount}
+      likesCount={data.getPost.likesCount}
       id={data.getPost.id}
       comments={data.getPost.comments}
       username={data.getPost.username}
@@ -46,7 +46,7 @@ const SUBMIT_COMMENT_MUTATION = gql`
         createdAt
         username
       }
-      commentCount
+      commentsCount
     }
   }
 `;
@@ -58,12 +58,12 @@ const FETCH_POST_QUERY = gql`
       body
       createdAt
       username
-      likeCount
+      likesCount
       title
       likes {
         username
       }
-      commentCount
+      commentsCount
       comments {
         id
         username

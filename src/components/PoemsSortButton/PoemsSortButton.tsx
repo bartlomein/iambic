@@ -23,7 +23,7 @@ export const PoemsSortButton = ({
           handleSortBy(sortName);
           setSelectedQueryName(buttonName);
         }}
-        isActive={isActive ? "red" : "white"}
+        isActive={isActive}
       >
         {buttonName}
       </SortButton>
