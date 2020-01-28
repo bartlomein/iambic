@@ -18,8 +18,8 @@ const PoemsList = () => {
     <PoemsListStyleContainer>
       {" "}
       {data &&
-        data.getPosts &&
-        data.getPosts.map(elem => (
+        data.getPostsSorted &&
+        data.getPostsSorted.map(elem => (
           <SinglePoemCard
             title={elem.title}
             body={elem.body}
