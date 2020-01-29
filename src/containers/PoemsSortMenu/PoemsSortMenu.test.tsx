@@ -11,7 +11,7 @@ describe("Sort Menu", () => {
     const wrapper = shallow(<PoemsSortMenu handleSortBy={jest.fn()} />);
 
     const menuContainer = wrapper.find(".sort-menu-container");
-    console.log(menuContainer.children());
-    expect(menuContainer.children()).toHaveLength(sortMenuList.length);
+
+    expect(menuContainer.children()).toHaveLength(sortMenuList.length - 1);
   });
 });
