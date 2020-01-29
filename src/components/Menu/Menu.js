@@ -6,7 +6,7 @@ import {
   HomeButtonContainer,
   EndingItemsContainer,
   LinkContainer
-} from "./styles";
+} from "./MenuStyles";
 
 const Menu = () => {
   const { user, logout } = useContext(AuthContext);
@@ -18,7 +18,11 @@ const Menu = () => {
           <LinkContainer>
             <Link to="/">iambic.dev</Link>
           </LinkContainer>
+          <LinkContainer>
+            <Link to="/poems">poems</Link>
+          </LinkContainer>
         </HomeButtonContainer>
+
         <EndingItemsContainer className="menu-ending-items-container">
           {user ? (
             <LinkContainer>
