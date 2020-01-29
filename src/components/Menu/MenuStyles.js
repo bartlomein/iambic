@@ -1,11 +1,11 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 export const MenuHeaderContainer = styled.div`
   display: flex;
   max-width: 100%;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Galada', cursive;
+  font-family: "Galada", cursive;
 
   font-weight: 600;
   height: 80px;
@@ -13,6 +13,7 @@ export const MenuHeaderContainer = styled.div`
 `;
 export const HomeButtonContainer = styled.div`
   justify-content: flex-start;
+  display: flex;
 `;
 export const EndingItemsContainer = styled.div`
   justify-content: flex-end;
@@ -21,6 +22,7 @@ export const EndingItemsContainer = styled.div`
 export const LinkContainer = styled.div`
   padding-left: 10px;
   padding-right: 10px;
+  display: flex;
   font-size: 50px;
   a,
   div {
