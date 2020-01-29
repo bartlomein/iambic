@@ -8,6 +8,7 @@ import { setContext } from "apollo-link-context";
 
 const httpLink = createHttpLink({
   uri: "https://iambic-backend.herokuapp.com/"
+  // uri: "http://localhost:5000"
 });
 
 const authLink = setContext(() => {

@@ -8,17 +8,37 @@ import { PoemsSortMenu } from "../PoemsSortMenu/PoemsSortMenu";
 const PoemsList = () => {
   const [selectedQuery, setSelectedQuery] = useState(FETCH_POST_QUERY);
   const [selectedQueryName, setSelectedQueryName] = useState("Most Recent");
+  const [currentOffset, setCurrentOffset] = useState(0);
 
-  const { loading, data } = useQuery(selectedQuery, {
+  const { data, loading, fetchMore, cursor } = useQuery(selectedQuery, {
     variables: {
       offset: 0,
-      limit: 10
+      limit: 1
     },
     fetchPolicy: "network-only"
   });
   if (data) {
     console.log(data);
   }
+
+  const onFetchMore = () => {
+    fetchMore({
+      variables: {
+        offset: currentOffset,
+        limit: 10
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return prev;
+        return {
+          ...prev,
+          // Add the new matches data to the end of the old matches data.
+          getPosts: [...prev.getPosts, ...fetchMoreResult.getPosts]
+        };
+      }
+    });
+    setCurrentOffset(currentOffset + 10);
+  };
+
   return (
     <PoemsListStyleContainer>
       {" "}
@@ -75,19 +95,19 @@ const PoemsList = () => {
             username={elem.username}
           />
         ))}
+      <button onClick={onFetchMore}>GET MORE</button>
     </PoemsListStyleContainer>
   );
 };
 const FETCH_POST_QUERY = gql`
-  {
-    getPosts {
+  query getPosts($offset: Int, $limit: Int) {
+    getPosts(offset: $offset, limit: $limit) {
       id
       body
-      title
       createdAt
       username
-      type
       likesCount
+      title
       likes {
         username
       }
@@ -101,5 +121,27 @@ const FETCH_POST_QUERY = gql`
     }
   }
 `;
+// const FETCH_POST_QUERY = gql`
+//   query($postId: ID!) {
+//     getPost(postId: $postId) {
+//       id
+//       body
+//       createdAt
+//       username
+//       likesCount
+//       title
+//       likes {
+//         username
+//       }
+//       commentsCount
+//       comments {
+//         id
+//         username
+//         createdAt
+//         body
+//       }
+//     }
+//   }
+// `;
 
 export default PoemsList;
