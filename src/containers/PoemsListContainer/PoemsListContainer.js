@@ -29,8 +29,6 @@ const PoemsList = () => {
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
-        console.log(prev);
-        console.log(fetchMoreResult);
         if (prev.getPosts) {
           return {
             ...prev,
@@ -40,7 +38,7 @@ const PoemsList = () => {
         } else if (prev.getPostsSortedByLikes) {
           return {
             ...prev,
-            // Add the new matches data to the end of the old matches data.
+
             getPostsSortedByLikes: [
               ...prev.getPostsSortedByLikes,
               ...fetchMoreResult.getPostsSortedByLikes
@@ -49,7 +47,7 @@ const PoemsList = () => {
         } else if (prev.getPostsSortedByComments) {
           return {
             ...prev,
-            // Add the new matches data to the end of the old matches data.
+
             getPostsSortedByComments: [
               ...prev.getPostsSortedByComments,
               ...fetchMoreResult.getPostsSortedByComments
