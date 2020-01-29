@@ -11,13 +11,15 @@ import { sortMenuList } from "../../utils/sortMenuButtonList";
 type Props = {
   handleSortBy: () => void;
   setSelectedQueryName: () => void;
+  setCurrentOffset: () => void;
   selectedQueryName: string;
 };
 
 export const PoemsSortMenu = ({
   handleSortBy,
   setSelectedQueryName,
-  selectedQueryName
+  selectedQueryName,
+  setCurrentOffset
 }: Props) => {
   return (
     <SortMenuContainer className="sort-menu-container">
@@ -29,6 +31,7 @@ export const PoemsSortMenu = ({
             sortName={item.sortName}
             handleSortBy={handleSortBy}
             setSelectedQueryName={setSelectedQueryName}
+            setCurrentOffset={setCurrentOffset}
             isActive={selectedQueryName === item.buttonName ? true : false}
           />
         ))}

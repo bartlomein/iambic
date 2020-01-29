@@ -1,15 +1,14 @@
 import gql from "graphql-tag";
 
 const FETCH_POST_QUERY = gql`
-  {
-    getPosts {
+  query getPosts($offset: Int, $limit: Int) {
+    getPosts(offset: $offset, limit: $limit) {
       id
       body
-      title
       createdAt
       username
-      type
       likesCount
+      title
       likes {
         username
       }
@@ -25,15 +24,14 @@ const FETCH_POST_QUERY = gql`
 `;
 
 const FETCH_POST_QUERY_SORTED_BY_LIKES = gql`
-  {
-    getPostsSortedByLikes {
+  query getPostsSortedByLikes($offset: Int, $limit: Int) {
+    getPostsSortedByLikes(offset: $offset, limit: $limit) {
       id
       body
-      title
       createdAt
       username
-      type
       likesCount
+      title
       likes {
         username
       }
@@ -48,15 +46,14 @@ const FETCH_POST_QUERY_SORTED_BY_LIKES = gql`
   }
 `;
 const FETCH_POST_QUERY_SORTED_BY_COMMENTS = gql`
-  {
-    getPostsSortedByComments {
+  query getPostsSortedByComments($offset: Int, $limit: Int) {
+    getPostsSortedByComments(offset: $offset, limit: $limit) {
       id
       body
-      title
       createdAt
       username
-      type
       likesCount
+      title
       likes {
         username
       }

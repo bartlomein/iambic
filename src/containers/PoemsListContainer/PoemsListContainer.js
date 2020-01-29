@@ -10,7 +10,7 @@ const PoemsList = () => {
   const [selectedQueryName, setSelectedQueryName] = useState("Most Recent");
   const [currentOffset, setCurrentOffset] = useState(0);
 
-  const { data, loading, fetchMore, cursor } = useQuery(selectedQuery, {
+  const { data, loading, fetchMore } = useQuery(selectedQuery, {
     variables: {
       offset: 0,
       limit: 1
@@ -29,11 +29,33 @@ const PoemsList = () => {
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
-        return {
-          ...prev,
-          // Add the new matches data to the end of the old matches data.
-          getPosts: [...prev.getPosts, ...fetchMoreResult.getPosts]
-        };
+        console.log(prev);
+        console.log(fetchMoreResult);
+        if (prev.getPosts) {
+          return {
+            ...prev,
+            // Add the new matches data to the end of the old matches data.
+            getPosts: [...prev.getPosts, ...fetchMoreResult.getPosts]
+          };
+        } else if (prev.getPostsSortedByLikes) {
+          return {
+            ...prev,
+            // Add the new matches data to the end of the old matches data.
+            getPostsSortedByLikes: [
+              ...prev.getPostsSortedByLikes,
+              ...fetchMoreResult.getPostsSortedByLikes
+            ]
+          };
+        } else if (prev.getPostsSortedByComments) {
+          return {
+            ...prev,
+            // Add the new matches data to the end of the old matches data.
+            getPostsSortedByComments: [
+              ...prev.getPostsSortedByComments,
+              ...fetchMoreResult.getPostsSortedByComments
+            ]
+          };
+        }
       }
     });
     setCurrentOffset(currentOffset + 10);
@@ -46,6 +68,7 @@ const PoemsList = () => {
         handleSortBy={setSelectedQuery}
         setSelectedQueryName={setSelectedQueryName}
         selectedQueryName={selectedQueryName}
+        setCurrentOffset={setCurrentOffset}
       />
       {/* All Posts Sorted by Likes*/}
       {data &&

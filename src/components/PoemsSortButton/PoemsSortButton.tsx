@@ -6,6 +6,7 @@ type Props = {
   buttonName: string;
   sortName: string;
   setSelectedQueryName: (sortName: string) => void;
+  setCurrentOffset: (num: number) => void;
   isActive: boolean;
 };
 
@@ -14,7 +15,8 @@ export const PoemsSortButton = ({
   buttonName,
   sortName,
   setSelectedQueryName,
-  isActive
+  isActive,
+  setCurrentOffset
 }: Props) => {
   return (
     <SortButtonContainer>
@@ -22,6 +24,7 @@ export const PoemsSortButton = ({
         onClick={() => {
           handleSortBy(sortName);
           setSelectedQueryName(buttonName);
+          setCurrentOffset(0);
         }}
         isActive={isActive}
       >
