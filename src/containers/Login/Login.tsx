@@ -6,6 +6,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
 // @ts-ignore
 import { Card, CardBody } from "shards-react";
+import { Loading } from "../../components/Loading/Loading";
 import {
   LoginContainer,
   LoginCardContainer,
@@ -63,6 +64,7 @@ const Login = (props: RouterProps) => {
       <LoginCardContainer>
         <Card>
           <CardBody>
+            {isConnecting && <Loading />}
             <Form
               onSubmit={onSubmit}
               noValidate
