@@ -9,9 +9,9 @@ import {
 import { sortMenuList } from "../../utils/sortMenuButtonList";
 
 type Props = {
-  handleSortBy: () => void;
-  setSelectedQueryName: () => void;
-  setCurrentOffset: () => void;
+  handleSortBy: (sort: string) => void;
+  setSelectedQueryName: (name: string) => void;
+  setCurrentOffset: (offset: number) => void;
   selectedQueryName: string;
 };
 

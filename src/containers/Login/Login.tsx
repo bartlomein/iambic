@@ -17,6 +17,7 @@ import { RouterProps } from "../../utils/Interfaces/Router";
 const Login = (props: RouterProps) => {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
+  const [isConnecting, setIsConnecting] = useState(false);
   const [isWrongPassword, setIsWrongPassword] = useState(false);
   const [userNotFound, setUserNotFound] = useState(false);
   const [values, setValues] = useState({
@@ -29,11 +30,13 @@ const Login = (props: RouterProps) => {
     update(proxy, result) {
       console.log(result.data.login);
       context.login(result.data.login);
+      setIsConnecting(false);
       props.history.push("/poems");
     },
     onError(err) {
       console.log(err);
       checkForLoginErrors(err?.graphQLErrors[0]?.extensions?.exception?.errors);
+      setIsConnecting(false);
       setErrors(err?.graphQLErrors[0]?.extensions?.exception?.errors);
     },
     variables: values
@@ -51,6 +54,7 @@ const Login = (props: RouterProps) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   const onSubmit = (e: any) => {
     e.preventDefault();
+    setIsConnecting(true);
     loginUser();
   };
 

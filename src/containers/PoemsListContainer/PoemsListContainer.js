@@ -142,27 +142,5 @@ const FETCH_POST_QUERY = gql`
     }
   }
 `;
-// const FETCH_POST_QUERY = gql`
-//   query($postId: ID!) {
-//     getPost(postId: $postId) {
-//       id
-//       body
-//       createdAt
-//       username
-//       likesCount
-//       title
-//       likes {
-//         username
-//       }
-//       commentsCount
-//       comments {
-//         id
-//         username
-//         createdAt
-//         body
-//       }
-//     }
-//   }
-// `;
 
 export default PoemsList;

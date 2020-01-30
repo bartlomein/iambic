@@ -25,4 +25,6 @@ export interface Match {
   params: Params;
 }
 
-export interface Params {}
+export interface Params {
+  poemId: string;
+}
