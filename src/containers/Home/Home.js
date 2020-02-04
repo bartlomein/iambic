@@ -1,8 +1,7 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+
 import GeneratedPoemCard from "../GeneratedPoemCard/GeneratedPoemCard";
-import PoemsList from "../PoemsListContainer/PoemsListContainer";
+
 import {
   HomeContainer,
   TopLeftTriangle,

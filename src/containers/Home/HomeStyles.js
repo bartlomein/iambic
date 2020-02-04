@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const HomeContainer = styled.div`
   max-width: 1600px;
@@ -24,7 +24,7 @@ export const RightTriangle = styled.div`
     #5c258d
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  top: 300px;
+  top: 400px;
   opacity: 1;
   position: absolute;
   z-index: -1;
@@ -51,6 +51,7 @@ export const TopRightTriangle = styled.div`
   width: 100%;
   height: 50%;
   opacity: 1;
+  top: 100px;
   overflow: hidden;
   -webkit-transform: skewY(21deg);
   transform: skewY(10deg);
@@ -73,5 +74,5 @@ export const TopRightTriangle = styled.div`
   position: absolute;
   z-index: -1;
   opacity: 1;
-  top: 0%;
+  top: 5%;
 `;

@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-
+import "antd/dist/antd.css";
 import SinglePoemCard from "../../components/SinglePoemCard/SinglePoemCard";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { PoemsListStyleContainer } from "./PoemsListContainerStyles";
 import { PoemsSortMenu } from "../PoemsSortMenu/PoemsSortMenu";
+import { Modal, Button } from "antd";
+import GeneratedPoemCard from "../GeneratedPoemCard/GeneratedPoemCard";
 const PoemsList = () => {
   const [selectedQuery, setSelectedQuery] = useState(FETCH_POST_QUERY);
   const [selectedQueryName, setSelectedQueryName] = useState("Most Recent");
   const [currentOffset, setCurrentOffset] = useState(0);
+
+  const [isNewPoemModalOpen, setOpenNewPoemModal] = useState(false);
 
   const { data, loading, fetchMore } = useQuery(selectedQuery, {
     variables: {
@@ -62,11 +66,15 @@ const PoemsList = () => {
   return (
     <PoemsListStyleContainer>
       {" "}
+      <Modal visible={isNewPoemModalOpen}>
+        <GeneratedPoemCard />
+      </Modal>
       <PoemsSortMenu
         handleSortBy={setSelectedQuery}
         setSelectedQueryName={setSelectedQueryName}
         selectedQueryName={selectedQueryName}
         setCurrentOffset={setCurrentOffset}
+        setOpenNewPoemModal={setOpenNewPoemModal}
       />
       {/* All Posts Sorted by Likes*/}
       {data &&

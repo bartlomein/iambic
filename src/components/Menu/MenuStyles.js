@@ -23,10 +23,13 @@ export const LinkContainer = styled.div`
   padding-left: 10px;
   padding-right: 10px;
   display: flex;
-  font-size: 50px;
+  font-size: 60px;
+  -webkit-text-stroke-width: 1px;
+  text-shadow: -5px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333,
+    1px 1px 0 #333;
   a,
   div {
-    color: #3f88c5;
+    color: #fffbff;
     cursor: pointer;
     transition: 0.5s;
   }

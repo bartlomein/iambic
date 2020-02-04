@@ -1,18 +1,19 @@
 body {
   margin: 0;
+  height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  background: #b24592; /* fallback for old browsers */
+  background: #9d50bb; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to top,
-    #f15f79,
-    #b24592
+    #6e48aa,
+    #9d50bb
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to top,
-    #f15f79,
-    #b24592
+    #6e48aa,
+    #9d50bb
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
