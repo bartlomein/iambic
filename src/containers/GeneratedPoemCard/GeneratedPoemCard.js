@@ -49,19 +49,18 @@ const GeneratedPoemCard = props => {
 
   const generateNewPoem = () => {
     setPoemPostedMessage(null);
-    console.log("generate");
     setPoem(null);
     callPoem();
   };
 
-  const getPoem = async () => {
-    console.log("get poem");
-    const poem = await apiCall("poetry", 4);
-    console.log("call poem");
-    console.log(poem);
-    setPoem(poem);
-  };
   const callPoem = () => {
+    const getPoem = async () => {
+      const poem = await apiCall("poetry", 4);
+      console.log("call poem");
+      console.log(poem);
+      setPoem(poem);
+    };
+
     getPoem();
     // props.setGeneratedPoem(poem);
     return () => {

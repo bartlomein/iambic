@@ -30,6 +30,7 @@ export const PoemsSortMenu = ({
         {sortMenuList.map(item => (
           <PoemsSortButton
             buttonName={item.buttonName}
+            // @ts-ignore
             sortName={item.sortName}
             handleSortBy={handleSortBy}
             setSelectedQueryName={setSelectedQueryName}

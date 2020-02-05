@@ -10,14 +10,14 @@ import GeneratedPoemCard from "../GeneratedPoemCard/GeneratedPoemCard";
 const PoemsList = () => {
   const [selectedQuery, setSelectedQuery] = useState(FETCH_POST_QUERY);
   const [selectedQueryName, setSelectedQueryName] = useState("Most Recent");
-  const [currentOffset, setCurrentOffset] = useState(0);
+  const [currentOffset, setCurrentOffset] = useState(10);
 
   const [isNewPoemModalOpen, setOpenNewPoemModal] = useState(false);
 
   const { data, loading, fetchMore } = useQuery(selectedQuery, {
     variables: {
       offset: 0,
-      limit: 1
+      limit: 10
     },
     fetchPolicy: "network-only"
   });
@@ -66,7 +66,10 @@ const PoemsList = () => {
   return (
     <PoemsListStyleContainer>
       {" "}
-      <Modal visible={isNewPoemModalOpen}>
+      <Modal
+        visible={isNewPoemModalOpen}
+        onCancel={() => setOpenNewPoemModal(false)}
+      >
         <GeneratedPoemCard />
       </Modal>
       <PoemsSortMenu
