@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Button, Card, CardBody } from "shards-react";
 import { Link } from "react-router-dom";
-import Like from "../Like";
+import Like from "../Like/Like";
 import { AuthContext } from "../../context/auth";
 import CommentPost from "../CommentPost";
 import CommentList from "../../containers/CommentsList";
+
 import { SinglePoemContainer } from "./SinglePoemCardStyles";
 
 function SinglePoemCard({
@@ -45,9 +46,8 @@ function SinglePoemCard({
               {" - "} {username}
             </div>
             <Like user={user} id={id} likesCount={likesCount} likes={likes} />
-            <CommentList comments={comments} postId={id} />
-
-            <CommentPost id={id} />
+            <CommentList comments={comments} postId={id} user={username} />
+            {user && <CommentPost id={id} />}
           </CardBody>
         </Card>
       </div>

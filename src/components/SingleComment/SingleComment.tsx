@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import gql from "graphql-tag";
 import { SingleCommentContainer } from "./SingleCommentStyles";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+import { AuthContext } from "../../context/auth";
 
 interface Comment {
   id: string;
@@ -14,17 +15,22 @@ interface Comment {
 type Props = {
   id: string;
   comment: Comment;
+  username: string;
 };
 
-const SingleComment = ({ id, comment }: Props) => {
+const SingleComment = ({ id, comment, username }: Props) => {
   const postId = id;
+  const { user } = useContext(AuthContext);
   const [deleteComment] = useMutation(DELETE_COMMENT_MUTATION, {
     variables: {
       postId,
       commentId: comment.id
     }
   });
+  console.log(user);
 
+  //@ts-ignore
+  let person = user?.username;
   return (
     <SingleCommentContainer>
       <div style={{ fontWeight: "bold" }}>
@@ -32,7 +38,9 @@ const SingleComment = ({ id, comment }: Props) => {
         {":"}
       </div>
       <div style={{ paddingLeft: 5 }}>{comment.body}</div>
-      <button onClick={() => deleteComment()}>DELETE</button>
+      {person === comment.username && (
+        <button onClick={() => deleteComment()}>DELETE</button>
+      )}
     </SingleCommentContainer>
   );
 };
