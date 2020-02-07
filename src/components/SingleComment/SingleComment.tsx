@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import gql from "graphql-tag";
 import { SingleCommentContainer } from "./SingleCommentStyles";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
 
 interface Comment {

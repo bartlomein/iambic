@@ -11,7 +11,8 @@ import {
   LoginContainer,
   LoginCardContainer,
   WrongPasswordDiv,
-  UserNotFoundDiv
+  UserNotFoundDiv,
+  LoaderContainer
 } from "./LoginStyles";
 import { RouterProps } from "../../utils/Interfaces/Router";
 
@@ -64,7 +65,7 @@ const Login = (props: RouterProps) => {
       <LoginCardContainer>
         <Card>
           <CardBody>
-            {isConnecting && <Loading />}
+            <LoaderContainer>{isConnecting && <Loading />}</LoaderContainer>
             <Form
               onSubmit={onSubmit}
               noValidate

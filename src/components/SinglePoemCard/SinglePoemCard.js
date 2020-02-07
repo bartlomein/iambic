@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import Like from "../Like/Like";
 import { AuthContext } from "../../context/auth";
 import CommentPost from "../CommentPost";
+import { useMutation } from "@apollo/react-hooks";
 import CommentList from "../../containers/CommentsList";
+import gql from "graphql-tag";
 
 import { SinglePoemContainer } from "./SinglePoemCardStyles";
 
@@ -23,12 +25,22 @@ function SinglePoemCard({
     backgroundImage:
       "radial-gradient( circle 274px at 7.4% 17.9%,  rgba(82,107,248,1) 0.3%, rgba(167,139,252,1) 90.5%"
   };
+  let postId = id;
+
+  const [deletePost] = useMutation(DELETE_POST_MUTATION, {
+    variables: {
+      postId
+    }
+  });
 
   return (
     <SinglePoemContainer>
       <div style={{ marginTop: 20 }}>
         <Card>
           <CardBody>
+            {user && user.username && username === user.username && (
+              <button onClick={() => deletePost()}>DELETE POST</button>
+            )}
             <Link to={`/poems/${id}`}>
               <h3>{title && title}</h3>
             </Link>
@@ -46,7 +58,7 @@ function SinglePoemCard({
               {" - "} {username}
             </div>
             <Like user={user} id={id} likesCount={likesCount} likes={likes} />
-            <CommentList comments={comments} postId={id} user={username} />
+            <CommentList comments={comments} postId={id} username={username} />
             {user && <CommentPost id={id} />}
           </CardBody>
         </Card>
@@ -54,4 +66,10 @@ function SinglePoemCard({
     </SinglePoemContainer>
   );
 }
+
+const DELETE_POST_MUTATION = gql`
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId)
+  }
+`;
 export default SinglePoemCard;
