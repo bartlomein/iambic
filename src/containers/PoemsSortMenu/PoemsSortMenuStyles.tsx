@@ -11,7 +11,10 @@ export const SortMenuContainer = styled.div`
     rgba(90, 97, 105, 0.12) 0px 0.25rem 0.53125rem,
     rgba(90, 97, 105, 0.1) 0px 0.125rem 0.1875rem;
 `;
-export const SortMenuTitle = styled.div``;
+export const SortMenuTitle = styled.div`
+  font-size: 20px;
+  color: white;
+`;
 export const SortMenuListContainer = styled.div`
   display: flex;
 `;

@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../context/auth";
 import { FormTextarea } from "shards-react";
+import { Button } from "antd";
 
 const CommentPost = ({ id }) => {
   const postId = id;
@@ -31,8 +32,11 @@ const CommentPost = ({ id }) => {
         onChange={event => setComment(event.target.value)}
         ref={commentInputRef}
       />
-      {}
-      <button onClick={submitComment}>comment</button>
+      <div style={{ marginTop: 5 }}>
+        <Button type="primary" onClick={submitComment}>
+          Post Comment
+        </Button>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { Button, Card, CardBody } from "shards-react";
+import { Card, CardBody } from "shards-react";
+import { Button } from "antd";
 import { Link } from "react-router-dom";
 import Like from "../Like/Like";
 import { AuthContext } from "../../context/auth";
@@ -8,7 +9,10 @@ import { useMutation } from "@apollo/react-hooks";
 import CommentList from "../../containers/CommentsList";
 import gql from "graphql-tag";
 
-import { SinglePoemContainer } from "./SinglePoemCardStyles";
+import {
+  SinglePoemContainer,
+  DeletePoemContainerDiv
+} from "./SinglePoemCardStyles";
 
 function SinglePoemCard({
   body,
@@ -38,9 +42,6 @@ function SinglePoemCard({
       <div style={{ marginTop: 20 }}>
         <Card>
           <CardBody>
-            {user && user.username && username === user.username && (
-              <button onClick={() => deletePost()}>DELETE POST</button>
-            )}
             <Link to={`/poems/${id}`}>
               <h3>{title && title}</h3>
             </Link>
@@ -60,6 +61,13 @@ function SinglePoemCard({
             <Like user={user} id={id} likesCount={likesCount} likes={likes} />
             <CommentList comments={comments} postId={id} username={username} />
             {user && <CommentPost id={id} />}
+            {user && user.username && username === user.username && (
+              <DeletePoemContainerDiv>
+                <Button type="danger" onClick={() => deletePost()}>
+                  DELETE POST
+                </Button>
+              </DeletePoemContainerDiv>
+            )}
           </CardBody>
         </Card>
       </div>

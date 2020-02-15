@@ -1,8 +1,12 @@
 import React, { useContext } from "react";
 import gql from "graphql-tag";
-import { SingleCommentContainer } from "./SingleCommentStyles";
+import {
+  SingleCommentContainer,
+  DeleteCommmentButton
+} from "./SingleCommentStyles";
 import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
+import { Button } from "antd";
 
 interface Comment {
   id: string;
@@ -39,7 +43,11 @@ const SingleComment = ({ id, comment, username }: Props) => {
       </div>
       <div style={{ paddingLeft: 5 }}>{comment.body}</div>
       {person === comment.username && (
-        <button onClick={() => deleteComment()}>DELETE</button>
+        <DeleteCommmentButton>
+          <Button type="danger" onClick={() => deleteComment()}>
+            Delete Comment
+          </Button>
+        </DeleteCommmentButton>
       )}
     </SingleCommentContainer>
   );
