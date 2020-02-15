@@ -13,7 +13,7 @@ export const MenuHeaderContainer = styled.div`
 `;
 export const HomeButtonContainer = styled.div`
   justify-content: flex-start;
-  display: flex;
+  display: flex;m
 `;
 export const EndingItemsContainer = styled.div`
   justify-content: flex-end;
