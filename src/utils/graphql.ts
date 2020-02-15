@@ -1,13 +1,14 @@
 import gql from "graphql-tag";
 
 export const FETCH_POSTS_QUERY = gql`
-  {
-    getPosts {
+  query getPosts($offset: Int, $limit: Int) {
+    getPosts(offset: $offset, limit: $limit) {
       id
       body
       createdAt
       username
       likesCount
+      title
       likes {
         username
       }

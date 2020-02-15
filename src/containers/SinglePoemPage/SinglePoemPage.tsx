@@ -1,12 +1,14 @@
 import React, { useContext, useState, useRef } from "react";
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
-import { Button, Card, CardBody } from "shards-react";
+
 import SinglePoemCard from "../../components/SinglePoemCard/SinglePoemCard";
 // import Like from './Like';
+import { RouterProps } from "../../utils/Interfaces/Router";
 
-const SinglePoemPage = props => {
+const SinglePoemPage = (props: RouterProps) => {
+  console.log(props);
   const postId = props.match.params.poemId;
   const { user } = useContext(AuthContext);
   const commentInputRef = useRef(null);

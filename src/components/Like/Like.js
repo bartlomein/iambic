@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { Button } from "shards-react";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
+import { HeartContainer } from "./LikeStyles";
 const Like = ({ user, id, likesCount, likes }) => {
   const [liked, setLiked] = useState(false);
   useEffect(() => {
@@ -17,11 +19,23 @@ const Like = ({ user, id, likesCount, likes }) => {
   });
   return (
     <div>
-      {likesCount}
+      {likesCount + " Likes"}
       {!user ? (
         "Please Login or Register to like this poem "
       ) : (
-        <Button onClick={likePost}> {!liked ? "Like Post" : "unlike"}</Button>
+        <HeartContainer>
+          {!liked ? (
+            <AiOutlineHeart onClick={likePost} size="2em">
+              {" "}
+              {!liked ? "Like Post" : "unlike"}
+            </AiOutlineHeart>
+          ) : (
+            <AiFillHeart onClick={likePost} fill={"red"} size="2em">
+              {" "}
+              {!liked ? "Like Post" : "unlike"}
+            </AiFillHeart>
+          )}
+        </HeartContainer>
       )}
     </div>
   );

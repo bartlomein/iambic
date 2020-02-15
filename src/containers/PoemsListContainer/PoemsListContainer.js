@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-
+import "antd/dist/antd.css";
 import SinglePoemCard from "../../components/SinglePoemCard/SinglePoemCard";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { PoemsListStyleContainer } from "./PoemsListContainerStyles";
 import { PoemsSortMenu } from "../PoemsSortMenu/PoemsSortMenu";
+import { Modal, Button } from "antd";
+import GeneratedPoemCard from "../GeneratedPoemCard/GeneratedPoemCard";
 const PoemsList = () => {
   const [selectedQuery, setSelectedQuery] = useState(FETCH_POST_QUERY);
   const [selectedQueryName, setSelectedQueryName] = useState("Most Recent");
-  const [currentOffset, setCurrentOffset] = useState(0);
+  const [currentOffset, setCurrentOffset] = useState(10);
+
+  const [isNewPoemModalOpen, setOpenNewPoemModal] = useState(false);
 
   const { data, loading, fetchMore } = useQuery(selectedQuery, {
     variables: {
       offset: 0,
-      limit: 1
+      limit: 10
     },
     fetchPolicy: "network-only"
   });
@@ -62,11 +66,18 @@ const PoemsList = () => {
   return (
     <PoemsListStyleContainer>
       {" "}
+      <Modal
+        visible={isNewPoemModalOpen}
+        onCancel={() => setOpenNewPoemModal(false)}
+      >
+        <GeneratedPoemCard />
+      </Modal>
       <PoemsSortMenu
         handleSortBy={setSelectedQuery}
         setSelectedQueryName={setSelectedQueryName}
         selectedQueryName={selectedQueryName}
         setCurrentOffset={setCurrentOffset}
+        setOpenNewPoemModal={setOpenNewPoemModal}
       />
       {/* All Posts Sorted by Likes*/}
       {data &&
@@ -142,27 +153,5 @@ const FETCH_POST_QUERY = gql`
     }
   }
 `;
-// const FETCH_POST_QUERY = gql`
-//   query($postId: ID!) {
-//     getPost(postId: $postId) {
-//       id
-//       body
-//       createdAt
-//       username
-//       likesCount
-//       title
-//       likes {
-//         username
-//       }
-//       commentsCount
-//       comments {
-//         id
-//         username
-//         createdAt
-//         body
-//       }
-//     }
-//   }
-// `;
 
 export default PoemsList;

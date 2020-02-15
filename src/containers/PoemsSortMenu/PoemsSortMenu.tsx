@@ -9,9 +9,10 @@ import {
 import { sortMenuList } from "../../utils/sortMenuButtonList";
 
 type Props = {
-  handleSortBy: () => void;
-  setSelectedQueryName: () => void;
-  setCurrentOffset: () => void;
+  handleSortBy: (sort: string) => void;
+  setSelectedQueryName: (name: string) => void;
+  setCurrentOffset: (offset: number) => void;
+  setOpenNewPoemModal: (open: boolean) => void;
   selectedQueryName: string;
 };
 
@@ -19,7 +20,8 @@ export const PoemsSortMenu = ({
   handleSortBy,
   setSelectedQueryName,
   selectedQueryName,
-  setCurrentOffset
+  setCurrentOffset,
+  setOpenNewPoemModal
 }: Props) => {
   return (
     <SortMenuContainer className="sort-menu-container">
@@ -28,6 +30,7 @@ export const PoemsSortMenu = ({
         {sortMenuList.map(item => (
           <PoemsSortButton
             buttonName={item.buttonName}
+            // @ts-ignore
             sortName={item.sortName}
             handleSortBy={handleSortBy}
             setSelectedQueryName={setSelectedQueryName}
@@ -36,6 +39,7 @@ export const PoemsSortMenu = ({
           />
         ))}
       </SortMenuListContainer>
+      <button onClick={() => setOpenNewPoemModal(true)}>OPEN NEW POEM</button>
     </SortMenuContainer>
   );
 };

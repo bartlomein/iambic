@@ -31,6 +31,7 @@ const CommentPost = ({ id }) => {
         onChange={event => setComment(event.target.value)}
         ref={commentInputRef}
       />
+      {}
       <button onClick={submitComment}>comment</button>
     </div>
   );

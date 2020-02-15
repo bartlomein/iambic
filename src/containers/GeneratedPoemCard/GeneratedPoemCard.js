@@ -56,7 +56,8 @@ const GeneratedPoemCard = props => {
   const callPoem = () => {
     const getPoem = async () => {
       const poem = await apiCall("poetry", 4);
-
+      console.log("call poem");
+      console.log(poem);
       setPoem(poem);
     };
 
