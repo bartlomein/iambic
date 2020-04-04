@@ -26,6 +26,12 @@ code {
   max-width: 1000px;
 }
 
+/* CARD */
+
+.card-body {
+  max-width: 100%;
+}
+
 /* LOADING */
 .lds-roller {
   display: inline-block;

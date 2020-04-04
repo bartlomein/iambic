@@ -3,7 +3,10 @@ import "antd/dist/antd.css";
 import SinglePoemCard from "../../components/SinglePoemCard/SinglePoemCard";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import { PoemsListStyleContainer } from "./PoemsListContainerStyles";
+import {
+  PoemsListStyleContainer,
+  PoemsListGetMoreContainer
+} from "./PoemsListContainerStyles";
 import { PoemsSortMenu } from "../PoemsSortMenu/PoemsSortMenu";
 import { Modal, Button } from "antd";
 import GeneratedPoemCard from "../GeneratedPoemCard/GeneratedPoemCard";
@@ -67,6 +70,7 @@ const PoemsList = () => {
     <PoemsListStyleContainer>
       {" "}
       <Modal
+        style={{ width: 1000 }}
         visible={isNewPoemModalOpen}
         onCancel={() => setOpenNewPoemModal(false)}
       >
@@ -127,7 +131,9 @@ const PoemsList = () => {
             username={elem.username}
           />
         ))}
-      <button onClick={onFetchMore}>GET MORE</button>
+      <PoemsListGetMoreContainer>
+        {data && <Button onClick={onFetchMore}>Get More</Button>}
+      </PoemsListGetMoreContainer>
     </PoemsListStyleContainer>
   );
 };

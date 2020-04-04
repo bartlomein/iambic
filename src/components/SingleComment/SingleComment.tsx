@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import gql from "graphql-tag";
 import {
   SingleCommentContainer,
-  DeleteCommmentButton
+  DeleteCommmentButton,
+  CommentTextContainer
 } from "./SingleCommentStyles";
 import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
@@ -41,7 +42,7 @@ const SingleComment = ({ id, comment, username }: Props) => {
         {comment.username}
         {":"}
       </div>
-      <div style={{ paddingLeft: 5 }}>{comment.body}</div>
+      <CommentTextContainer>{comment.body}</CommentTextContainer>
       {person === comment.username && (
         <DeleteCommmentButton>
           <Button type="danger" onClick={() => deleteComment()}>

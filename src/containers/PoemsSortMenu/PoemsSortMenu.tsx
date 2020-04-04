@@ -5,6 +5,7 @@ import {
   SortMenuTitle,
   SortMenuListContainer
 } from "./PoemsSortMenuStyles";
+import { Button } from "antd";
 
 import { sortMenuList } from "../../utils/sortMenuButtonList";
 
@@ -39,7 +40,9 @@ export const PoemsSortMenu = ({
           />
         ))}
       </SortMenuListContainer>
-      <button onClick={() => setOpenNewPoemModal(true)}>OPEN NEW POEM</button>
+      <Button onClick={() => setOpenNewPoemModal(true)}>
+        Generate New Poem
+      </Button>
     </SortMenuContainer>
   );
 };
