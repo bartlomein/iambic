@@ -8,25 +8,49 @@ import SinglePoemPage from "./containers/SinglePoemPage/SinglePoemPage";
 import { AuthProvider } from "./context/auth";
 import AuthRoute from "./utils/AuthRoute";
 import Menu from "./components/Menu/Menu";
+import { useWindowSize } from "./utils/hooks/useWindowSize";
 
 const App = () => {
   const [generatedPoem, setGeneratedPoem] = useState([]);
+
+  const windowWidth = useWindowSize();
 
   return (
     <div>
       <AuthProvider>
         <Router>
-          <Menu />
+          <Menu windowWidth={windowWidth} />
           <Route
             exact
             path="/"
             component={Home}
             setGeneratedPoem={setGeneratedPoem}
+            windowWidth={windowWidth}
           />
-          <Route exact path="/poems" component={PoemsList} />
-          <Route exact path="/poems/:poemId" component={SinglePoemPage} />
-          <AuthRoute exact path="/login" component={Login} />
-          <AuthRoute exact path="/register" component={Register} />
+          <Route
+            exact
+            path="/poems"
+            component={PoemsList}
+            windowWidth={windowWidth}
+          />
+          <Route
+            exact
+            path="/poems/:poemId"
+            component={SinglePoemPage}
+            windowWidth={windowWidth}
+          />
+          <AuthRoute
+            exact
+            path="/login"
+            component={Login}
+            windowWidth={windowWidth}
+          />
+          <AuthRoute
+            exact
+            path="/register"
+            component={Register}
+            windowWidth={windowWidth}
+          />
         </Router>
       </AuthProvider>
     </div>

@@ -3,7 +3,18 @@ export const SortMenuContainer = styled.div`
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+  background: #d3cce3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e9e4f0,
+    #d3cce3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   padding: 10px;
   border-radius: 10px;
   box-shadow: rgba(90, 97, 105, 0.1) 0px 0.46875rem 2.1875rem,

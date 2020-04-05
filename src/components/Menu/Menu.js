@@ -7,12 +7,13 @@ import {
   EndingItemsContainer,
   LinkContainer
 } from "./MenuStyles";
-
-const Menu = () => {
+import { MobileMenu } from "../MobileMenu/MobileMenu";
+const Menu = windowWidth => {
   const { user, logout } = useContext(AuthContext);
 
   return (
     <div>
+      {windowWidth.width < 600 && <MobileMenu />}
       <MenuHeaderContainer>
         <HomeButtonContainer>
           <LinkContainer>

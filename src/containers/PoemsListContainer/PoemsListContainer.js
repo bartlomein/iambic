@@ -10,6 +10,7 @@ import {
 import { PoemsSortMenu } from "../PoemsSortMenu/PoemsSortMenu";
 import { Modal, Button } from "antd";
 import GeneratedPoemCard from "../GeneratedPoemCard/GeneratedPoemCard";
+import { Loading } from "../../components/Loading/Loading";
 const PoemsList = () => {
   const [selectedQuery, setSelectedQuery] = useState(FETCH_POST_QUERY);
   const [selectedQueryName, setSelectedQueryName] = useState("Most Recent");
@@ -115,6 +116,7 @@ const PoemsList = () => {
             username={elem.username}
           />
         ))}
+      {!data && <Loading />}
       {/*All posts sorted by amount of comments*/}
       {data &&
         data.getPostsSortedByComments &&
