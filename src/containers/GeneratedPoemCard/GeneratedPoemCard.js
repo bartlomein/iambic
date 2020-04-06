@@ -7,42 +7,46 @@ import gql from "graphql-tag";
 import { AuthContext } from "../../context/auth";
 import { useMutation } from "@apollo/react-hooks";
 import { FETCH_POSTS_QUERY } from "../../utils/graphql";
-import { GeneratedPoemCardContainer } from "./GeneratedPoemCardStyles";
-
+import {
+  GeneratedPoemCardContainer,
+  GeneratedPoemLoaderContainer,
+} from "./GeneratedPoemCardStyles";
+import { Loading } from "../../components/Loading/Loading";
 const config = { mass: 1, tension: 700, friction: 500 };
 
-const GeneratedPoemCard = props => {
+const GeneratedPoemCard = (props) => {
   const { user } = useContext(AuthContext);
   const [poem, setPoem] = useState(null);
+  const [hasData, setHasData] = useState(false);
   const [poemPostedMessage, setPoemPostedMessage] = useState(null);
   const [toggle, set] = useState(true);
   const trail = useTrail(poem && poem.poem && poem.poem.length, {
     config,
     opacity: toggle ? 1 : 0,
 
-    from: { opacity: 0, x: 20 }
+    from: { opacity: 0, x: 20 },
   });
 
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
     variables: {
       title: poem && poem.title && poem.title[0],
       body: poem && poem.poem && poem.poem.length > 1 && poem.poem,
-      type: "poem"
+      type: "poem",
     },
     type: "poem",
     update(proxy, result) {
       const data = proxy.readQuery({
-        query: FETCH_POSTS_QUERY
+        query: FETCH_POSTS_QUERY,
       });
       // data.getPosts = [result.data.createPost]
       proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
       setPoemPostedMessage("Congratulations, your poem has been posted!");
       console.log(data);
       poem = [];
-    }
+    },
   });
 
-  const postPoem = props => {
+  const postPoem = (props) => {
     createPost(poem.poem);
     setPoemPostedMessage("Your Poem Has Been Posted");
   };
@@ -55,9 +59,11 @@ const GeneratedPoemCard = props => {
 
   const callPoem = () => {
     const getPoem = async () => {
+      setHasData(false);
       const poem = await apiCall("poetry", 4);
-      console.log("call poem");
-      console.log(poem);
+
+      setHasData(true);
+
       setPoem(poem);
     };
 
@@ -73,6 +79,12 @@ const GeneratedPoemCard = props => {
       <GeneratedPoemCardContainer>
         <Card>
           <CardBody>
+            {!hasData && (
+              <GeneratedPoemLoaderContainer>
+                <Loading />
+              </GeneratedPoemLoaderContainer>
+            )}
+
             {poemPostedMessage ? (
               <>
                 <div>{poemPostedMessage}</div>{" "}
@@ -87,7 +99,7 @@ const GeneratedPoemCard = props => {
                 <div
                   className="trails-main-poem"
                   style={{ minHeight: 250 }}
-                  onClick={() => set(state => state)}
+                  onClick={() => set((state) => state)}
                 >
                   <div>
                     <h3>{poem && poem.title && poem.title}</h3>
@@ -98,8 +110,8 @@ const GeneratedPoemCard = props => {
                         style={{
                           ...rest,
                           transform: x.interpolate(
-                            x => `translate3d(0,${x}px,0)`
-                          )
+                            (x) => `translate3d(0,${x}px,0)`
+                          ),
                         }}
                       >
                         <animated.div style={{ height }}>

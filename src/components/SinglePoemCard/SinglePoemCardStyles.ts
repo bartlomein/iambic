@@ -10,3 +10,7 @@ export const DeletePoemContainerDiv = styled.div`
   align-content: flex-end;
   justify-content: flex-end;
 `;
+
+export const PoemsButtonsContainerDiv = styled.div`
+  display: flex;
+`;

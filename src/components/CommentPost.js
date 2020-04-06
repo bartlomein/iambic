@@ -5,7 +5,7 @@ import { AuthContext } from "../context/auth";
 import { FormTextarea } from "shards-react";
 import { Button } from "antd";
 
-const CommentPost = ({ id }) => {
+const CommentPost = ({ id, username, deletePost }) => {
   const postId = id;
   const { user } = useContext(AuthContext);
   const commentInputRef = useRef(null);
@@ -18,8 +18,8 @@ const CommentPost = ({ id }) => {
     },
     variables: {
       postId,
-      body: comment
-    }
+      body: comment,
+    },
   });
 
   return (
@@ -29,13 +29,18 @@ const CommentPost = ({ id }) => {
         placeholder="Comment.."
         name="comment"
         value={comment}
-        onChange={event => setComment(event.target.value)}
+        onChange={(event) => setComment(event.target.value)}
         ref={commentInputRef}
       />
       <div style={{ marginTop: 5 }}>
         <Button type="primary" onClick={submitComment}>
           Post Comment
         </Button>
+        {user && user.username && username === user.username && (
+          <Button type="danger" onClick={() => deletePost()}>
+            DELETE POST
+          </Button>
+        )}
       </div>
     </div>
   );

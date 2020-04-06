@@ -3,11 +3,13 @@ import gql from "graphql-tag";
 import {
   SingleCommentContainer,
   DeleteCommmentButton,
-  CommentTextContainer
+  CommentTextContainer,
 } from "./SingleCommentStyles";
 import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
 import { Button } from "antd";
+
+import { FaTrash } from "react-icons/fa";
 
 interface Comment {
   id: string;
@@ -29,8 +31,8 @@ const SingleComment = ({ id, comment, username }: Props) => {
   const [deleteComment] = useMutation(DELETE_COMMENT_MUTATION, {
     variables: {
       postId,
-      commentId: comment.id
-    }
+      commentId: comment.id,
+    },
   });
   console.log(user);
 
@@ -45,9 +47,9 @@ const SingleComment = ({ id, comment, username }: Props) => {
       <CommentTextContainer>{comment.body}</CommentTextContainer>
       {person === comment.username && (
         <DeleteCommmentButton>
-          <Button type="danger" onClick={() => deleteComment()}>
+          <FaTrash size="1.5em" onClick={() => deleteComment()}>
             Delete Comment
-          </Button>
+          </FaTrash>
         </DeleteCommmentButton>
       )}
     </SingleCommentContainer>

@@ -5,6 +5,7 @@ export const SingleCommentContainer = styled.div`
 `;
 export const DeleteCommmentButton = styled.div`
   justify-content: flex-end;
+  cursor: pointer;
 `;
 export const CommentTextContainer = styled.div`
   padding-left: 5px;

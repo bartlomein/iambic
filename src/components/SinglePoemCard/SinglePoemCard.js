@@ -11,7 +11,8 @@ import gql from "graphql-tag";
 
 import {
   SinglePoemContainer,
-  DeletePoemContainerDiv
+  DeletePoemContainerDiv,
+  PoemsButtonsContainerDiv,
 } from "./SinglePoemCardStyles";
 
 function SinglePoemCard({
@@ -22,19 +23,19 @@ function SinglePoemCard({
   id,
   comments,
   username,
-  title
+  title,
 }) {
   const { user } = useContext(AuthContext);
   const singlePoemContainerProps = {
     backgroundImage:
-      "radial-gradient( circle 274px at 7.4% 17.9%,  rgba(82,107,248,1) 0.3%, rgba(167,139,252,1) 90.5%"
+      "radial-gradient( circle 274px at 7.4% 17.9%,  rgba(82,107,248,1) 0.3%, rgba(167,139,252,1) 90.5%",
   };
   let postId = id;
 
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     variables: {
-      postId
-    }
+      postId,
+    },
   });
 
   return (
@@ -45,7 +46,7 @@ function SinglePoemCard({
             <Link to={`/poems/${id}`}>
               <h3>{title && title}</h3>
             </Link>
-            {body.map(line => (
+            {body.map((line) => (
               <div style={{ fontSize: 22 }}>{line}</div>
             ))}
             <div
@@ -53,21 +54,22 @@ function SinglePoemCard({
                 textAlign: "right",
                 fontSize: 16,
                 fontStyle: "italic",
-                marginRight: 30
+                marginRight: 30,
               }}
             >
               {" - "} {username}
             </div>
             <Like user={user} id={id} likesCount={likesCount} likes={likes} />
             <CommentList comments={comments} postId={id} username={username} />
-            {user && <CommentPost id={id} />}
-            {user && user.username && username === user.username && (
-              <DeletePoemContainerDiv>
-                <Button type="danger" onClick={() => deletePost()}>
-                  DELETE POST
-                </Button>
-              </DeletePoemContainerDiv>
-            )}
+            <PoemsButtonsContainerDiv>
+              {user && (
+                <CommentPost
+                  id={id}
+                  deletePost={deletePost}
+                  username={username}
+                />
+              )}
+            </PoemsButtonsContainerDiv>
           </CardBody>
         </Card>
       </div>
