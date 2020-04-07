@@ -76,7 +76,7 @@ const GeneratedPoemCard = (props) => {
   useEffect(callPoem, []);
   return (
     <div>
-      <GeneratedPoemCardContainer>
+      <GeneratedPoemCardContainer className="generated-poem-card">
         <Card>
           <CardBody>
             {!hasData && (
