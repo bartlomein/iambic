@@ -29,6 +29,7 @@ export const MenuItem = ({ i, link, toggleOpen }) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       onClick={toggleOpen}
+      style={{ fontSize: 40 }}
     >
       <Link to={link && link.link}>{link && link.name}</Link>
     </motion.li>
