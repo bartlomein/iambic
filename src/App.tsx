@@ -19,7 +19,7 @@ const App = () => {
     <div>
       <AuthProvider>
         <Router>
-          <Menu windowWidth={windowWidth} />
+          <Menu />
           <Route
             exact
             path="/"

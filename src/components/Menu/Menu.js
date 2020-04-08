@@ -5,45 +5,52 @@ import {
   MenuHeaderContainer,
   HomeButtonContainer,
   EndingItemsContainer,
-  LinkContainer
+  LinkContainer,
 } from "./MenuStyles";
 import { MobileMenu } from "../MobileMenu/MobileMenu";
-const Menu = windowWidth => {
+import { useWindowSize } from "../../utils/hooks/useWindowSize";
+const Menu = () => {
   const { user, logout } = useContext(AuthContext);
+  const windowWidth = useWindowSize();
 
   return (
     <div>
-      {windowWidth.width < 600 && <MobileMenu />}
-      <MenuHeaderContainer>
-        <HomeButtonContainer>
-          <LinkContainer>
-            <Link to="/">iambic.dev</Link>
-          </LinkContainer>
-          <LinkContainer>
-            <Link to="/poems">poems</Link>
-          </LinkContainer>
-        </HomeButtonContainer>
-
-        <EndingItemsContainer className="menu-ending-items-container">
-          {user ? (
+      {windowWidth.width < 600 ? (
+        <div style={{ marginBottom: 20 }} className="mobile-menu-container">
+          <MobileMenu />
+        </div>
+      ) : (
+        <MenuHeaderContainer>
+          <HomeButtonContainer>
             <LinkContainer>
-              <div onClick={logout}>logout</div>
+              <Link to="/">iambic.dev</Link>
             </LinkContainer>
-          ) : (
-            <div style={{ display: "flex" }}>
+            <LinkContainer>
+              <Link to="/poems">poems</Link>
+            </LinkContainer>
+          </HomeButtonContainer>
+
+          <EndingItemsContainer className="menu-ending-items-container">
+            {user ? (
               <LinkContainer>
-                <Link to="/login">login</Link>
+                <div onClick={logout}>logout</div>
               </LinkContainer>
-              <LinkContainer>
-                <Link to="/register">register</Link>
-              </LinkContainer>
-            </div>
-          )}
-          <LinkContainer>
-            <Link to="https://twitter.com/bartlomein">contact</Link>
-          </LinkContainer>
-        </EndingItemsContainer>
-      </MenuHeaderContainer>
+            ) : (
+              <div style={{ display: "flex" }}>
+                <LinkContainer>
+                  <Link to="/login">login</Link>
+                </LinkContainer>
+                <LinkContainer>
+                  <Link to="/register">register</Link>
+                </LinkContainer>
+              </div>
+            )}
+            <LinkContainer>
+              <Link to="https://twitter.com/bartlomein">contact</Link>
+            </LinkContainer>
+          </EndingItemsContainer>
+        </MenuHeaderContainer>
+      )}
     </div>
   );
 };
