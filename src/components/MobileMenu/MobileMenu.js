@@ -36,10 +36,16 @@ export const MobileMenu = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
+      style={isOpen ? { width: 300 } : 0}
     >
-      <motion.div className="background" variants={sidebar} />
-      <Navigation toggleOpen={() => toggleOpen()} />
-      <MenuToggle toggle={() => toggleOpen()} />
+      <motion.div
+        className="background"
+        variants={sidebar}
+        isOpen={isOpen}
+        style={isOpen ? { zIndex: 2, width: 300 } : { zIndex: 0, width: 0 }}
+      />
+      <Navigation toggleOpen={() => toggleOpen()} isOpen={isOpen} />
+      <MenuToggle toggle={() => toggleOpen()} style={{ zIndex: 999 }} />
     </motion.nav>
   );
 };

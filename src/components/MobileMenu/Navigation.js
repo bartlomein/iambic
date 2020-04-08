@@ -11,16 +11,23 @@ const variants = {
   },
 };
 
-export const Navigation = ({ toggleOpen }) => (
-  <motion.ul variants={variants}>
-    {itemIds.map((i) => (
-      <MenuItem i={i} key={i} link={links[i]} toggleOpen={toggleOpen} />
-    ))}
-  </motion.ul>
+export const Navigation = ({ toggleOpen, isOpen }) => (
+  <>
+    {isOpen && (
+      <motion.ul variants={variants} style={{ zIndex: 999 }}>
+        {itemIds.map((i) => (
+          <MenuItem i={i} key={i} link={links[i]} toggleOpen={toggleOpen} />
+        ))}
+      </motion.ul>
+    )}
+  </>
 );
 
 const itemIds = [0, 1, 2, 3, 4];
 const links = [
   { name: "Home", link: "/" },
   { name: "Poems", link: "/poems" },
+  { name: "Login", link: "/login" },
+  { name: "Register", link: "/register" },
+  { name: "Contact", link: "https://twitter.com/bartlomein" },
 ];

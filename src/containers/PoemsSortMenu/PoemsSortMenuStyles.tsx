@@ -21,6 +21,10 @@ export const SortMenuContainer = styled.div`
     rgba(90, 97, 105, 0.1) 0px 0.9375rem 1.40625rem,
     rgba(90, 97, 105, 0.12) 0px 0.25rem 0.53125rem,
     rgba(90, 97, 105, 0.1) 0px 0.125rem 0.1875rem;
+  @media screen and (max-width: 600px) {
+    width: 90%;
+    margin-top: 20px;
+  }
 `;
 export const SortMenuTitle = styled.div`
   font-size: 20px;
