@@ -29,6 +29,9 @@ export const SortMenuContainer = styled.div`
 export const SortMenuTitle = styled.div`
   font-size: 20px;
   color: white;
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+  }
 `;
 export const SortMenuListContainer = styled.div`
   display: flex;

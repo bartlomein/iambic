@@ -10,6 +10,8 @@ import { FETCH_POSTS_QUERY } from "../../utils/graphql";
 import {
   GeneratedPoemCardContainer,
   GeneratedPoemLoaderContainer,
+  GeneratedPoemCardLineContainer,
+  GeneratedPoemCardTitleContainer,
 } from "./GeneratedPoemCardStyles";
 import { Loading } from "../../components/Loading/Loading";
 const config = { mass: 1, tension: 700, friction: 500 };
@@ -102,7 +104,9 @@ const GeneratedPoemCard = (props) => {
                   onClick={() => set((state) => state)}
                 >
                   <div>
-                    <h3>{poem && poem.title && poem.title}</h3>
+                    <GeneratedPoemCardTitleContainer>
+                      {poem && poem.title && poem.title}
+                    </GeneratedPoemCardTitleContainer>
                     {trail.map(({ x, height, ...rest }, index) => (
                       <animated.div
                         key={poem && poem.poem && poem.poem[index]}
@@ -115,7 +119,9 @@ const GeneratedPoemCard = (props) => {
                         }}
                       >
                         <animated.div style={{ height }}>
-                          {poem && poem.poem && poem.poem[index]}
+                          <GeneratedPoemCardLineContainer>
+                            {poem && poem.poem && poem.poem[index]}
+                          </GeneratedPoemCardLineContainer>
                         </animated.div>
                       </animated.div>
                     ))}

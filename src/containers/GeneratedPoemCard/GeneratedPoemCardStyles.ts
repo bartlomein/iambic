@@ -13,3 +13,13 @@ export const GeneratedPoemLoaderContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+export const GeneratedPoemCardLineContainer = styled.div`
+  font-size: 16px;
+  margin-top: 5px;
+  line-height: 16px;
+`;
+
+export const GeneratedPoemCardTitleContainer = styled.div`
+  font-size: 20px;
+  line-height: 20px;
+`;

@@ -12,6 +12,7 @@ import gql from "graphql-tag";
 import {
   SinglePoemContainer,
   DeletePoemContainerDiv,
+  PoemLineContainer,
   PoemsButtonsContainerDiv,
 } from "./SinglePoemCardStyles";
 
@@ -47,12 +48,12 @@ function SinglePoemCard({
               <h3>{title && title}</h3>
             </Link>
             {body.map((line) => (
-              <div style={{ fontSize: 22 }}>{line}</div>
+              <PoemLineContainer>{line}</PoemLineContainer>
             ))}
             <div
               style={{
                 textAlign: "right",
-                fontSize: 16,
+
                 fontStyle: "italic",
                 marginRight: 30,
               }}
