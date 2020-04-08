@@ -38,7 +38,7 @@ export const MobileMenu = () => {
       ref={containerRef}
     >
       <motion.div className="background" variants={sidebar} />
-      <Navigation />
+      <Navigation toggleOpen={() => toggleOpen()} />
       <MenuToggle toggle={() => toggleOpen()} />
     </motion.nav>
   );
