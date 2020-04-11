@@ -1,9 +1,14 @@
 import React, { useContext, useState, useRef } from "react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { AuthContext } from "../context/auth";
+import { AuthContext } from "../../context/auth";
 import { FormTextarea } from "shards-react";
 import { Button } from "antd";
+
+import {
+  CommentPostContainer,
+  CommentPostButtonsContainer,
+} from "./CommentPostStyles";
 
 const CommentPost = ({ id, username, deletePost }) => {
   const postId = id;
@@ -23,7 +28,7 @@ const CommentPost = ({ id, username, deletePost }) => {
   });
 
   return (
-    <div>
+    <CommentPostContainer>
       <FormTextarea
         type="text"
         placeholder="Comment.."
@@ -32,17 +37,17 @@ const CommentPost = ({ id, username, deletePost }) => {
         onChange={(event) => setComment(event.target.value)}
         ref={commentInputRef}
       />
-      <div style={{ marginTop: 5 }}>
+      <CommentPostButtonsContainer>
         <Button type="primary" onClick={submitComment}>
           Post Comment
         </Button>
         {user && user.username && username === user.username && (
           <Button type="danger" onClick={() => deletePost()}>
-            DELETE POST
+            Delete Post
           </Button>
         )}
-      </div>
-    </div>
+      </CommentPostButtonsContainer>
+    </CommentPostContainer>
   );
 };
 const SUBMIT_COMMENT_MUTATION = gql`

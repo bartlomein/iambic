@@ -3,11 +3,11 @@ import SingleComment from "../components/SingleComment/SingleComment";
 
 const CommentsList = ({ comments, postId }) => {
   return (
-    <div>
+    <div style={{ marginBottom: 10 }}>
       {comments &&
         comments
           .reverse()
-          .map(comment => (
+          .map((comment) => (
             <SingleComment
               comment={comment}
               id={postId}

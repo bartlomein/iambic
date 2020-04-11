@@ -4,6 +4,7 @@ import {
   SingleCommentContainer,
   DeleteCommmentButton,
   CommentTextContainer,
+  CommmentAndTrashContainer,
 } from "./SingleCommentStyles";
 import { useMutation } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth";
@@ -44,14 +45,16 @@ const SingleComment = ({ id, comment, username }: Props) => {
         {comment.username}
         {":"}
       </div>
-      <CommentTextContainer>{comment.body}</CommentTextContainer>
-      {person === comment.username && (
-        <DeleteCommmentButton>
-          <FaTrash size="1.5em" onClick={() => deleteComment()}>
-            Delete Comment
-          </FaTrash>
-        </DeleteCommmentButton>
-      )}
+      <CommmentAndTrashContainer>
+        <CommentTextContainer>{comment.body}</CommentTextContainer>
+        {person === comment.username && (
+          <DeleteCommmentButton>
+            <FaTrash size="1.2em" onClick={() => deleteComment()}>
+              Delete Comment
+            </FaTrash>
+          </DeleteCommmentButton>
+        )}
+      </CommmentAndTrashContainer>
     </SingleCommentContainer>
   );
 };

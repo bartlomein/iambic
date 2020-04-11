@@ -4,7 +4,7 @@ import { Button } from "antd";
 import { Link } from "react-router-dom";
 import Like from "../Like/Like";
 import { AuthContext } from "../../context/auth";
-import CommentPost from "../CommentPost";
+import CommentPost from "../CommentPost/CommentPost";
 import { useMutation } from "@apollo/react-hooks";
 import CommentList from "../../containers/CommentsList";
 import gql from "graphql-tag";

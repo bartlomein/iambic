@@ -5,38 +5,44 @@ import gql from "graphql-tag";
 import { Button } from "shards-react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-import { HeartContainer } from "./LikeStyles";
+import {
+  HeartContainer,
+  LikeAreaContainer,
+  LikesCountContainer,
+} from "./LikeStyles";
 const Like = ({ user, id, likesCount, likes }) => {
   const [liked, setLiked] = useState(false);
   useEffect(() => {
-    if (user && likes.find(like => like.username === user.username)) {
+    if (user && likes.find((like) => like.username === user.username)) {
       setLiked(true);
     } else setLiked(false);
   }, [user, likes]);
 
   const [likePost] = useMutation(LIKE_POST_MUTATION, {
-    variables: { postId: id }
+    variables: { postId: id },
   });
   return (
     <div>
-      {likesCount + " Likes"}
       <div>
         {!user ? (
-          `Please Login or Register to like this poem`
+          `Please Login or Register to like or comment on this poem`
         ) : (
-          <HeartContainer>
-            {!liked ? (
-              <AiOutlineHeart onClick={likePost} size="2em">
-                {" "}
-                {!liked ? "Like Post" : "unlike"}
-              </AiOutlineHeart>
-            ) : (
-              <AiFillHeart onClick={likePost} fill={"red"} size="2em">
-                {" "}
-                {!liked ? "Like Post" : "unlike"}
-              </AiFillHeart>
-            )}
-          </HeartContainer>
+          <LikeAreaContainer>
+            <LikesCountContainer>{likesCount + " Likes"}</LikesCountContainer>
+            <HeartContainer>
+              {!liked ? (
+                <AiOutlineHeart onClick={likePost} size="2em">
+                  {" "}
+                  {!liked ? "Like Post" : "unlike"}
+                </AiOutlineHeart>
+              ) : (
+                <AiFillHeart onClick={likePost} fill={"red"} size="2em">
+                  {" "}
+                  {!liked ? "Like Post" : "unlike"}
+                </AiFillHeart>
+              )}
+            </HeartContainer>
+          </LikeAreaContainer>
         )}
       </div>
     </div>
