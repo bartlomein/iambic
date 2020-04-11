@@ -16,7 +16,7 @@ const Menu = () => {
   return (
     <div>
       {windowWidth.width < 600 ? (
-        <div style={{ marginBottom: 20 }} className="mobile-menu-container">
+        <div style={{ marginBottom: 80 }} className="mobile-menu-container">
           <MobileMenu />
         </div>
       ) : (

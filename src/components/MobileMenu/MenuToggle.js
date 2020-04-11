@@ -13,7 +13,7 @@ const Path = (props) => (
 
 export const MenuToggle = ({ toggle }) => (
   <button onClick={toggle} style={{ zIndex: 999, background: "white" }}>
-    <svg width="23" height="23" viewBox="0 0 23 23">
+    <svg width="33" height="33" viewBox="0 0 23 23" style={{ paddingTop: 6 }}>
       <Path
         variants={{
           closed: { d: "M 2 2.5 L 20 2.5" },

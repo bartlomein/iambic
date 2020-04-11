@@ -12,6 +12,7 @@ import gql from "graphql-tag";
 import {
   SinglePoemContainer,
   DeletePoemContainerDiv,
+  SinglePoemCardPoemTitle,
   PoemLineContainer,
   PoemsButtonsContainerDiv,
 } from "./SinglePoemCardStyles";
@@ -45,7 +46,9 @@ function SinglePoemCard({
         <Card>
           <CardBody>
             <Link to={`/poems/${id}`}>
-              <h3>{title && title}</h3>
+              <SinglePoemCardPoemTitle>
+                {title ? title : "Untitled"}
+              </SinglePoemCardPoemTitle>
             </Link>
             {body.map((line) => (
               <PoemLineContainer>{line}</PoemLineContainer>

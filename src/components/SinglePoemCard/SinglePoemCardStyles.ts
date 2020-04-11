@@ -14,6 +14,12 @@ export const DeletePoemContainerDiv = styled.div`
   justify-content: flex-end;
 `;
 
+export const SinglePoemCardPoemTitle = styled.div`
+  font-family: "Libre Baskerville", serif;
+  font-size: 20px;
+  color: black;
+`;
+
 export const PoemsButtonsContainerDiv = styled.div`
   display: flex;
 `;

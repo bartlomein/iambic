@@ -33,6 +33,7 @@ export const GeneratedPoemCardSingleButton = styled.div`
 `;
 
 export const GeneratedPoemCardTitleContainer = styled.div`
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 24px;
+  line-height: 26px;
+  font-family: "Libre Baskerville", serif;
 `;

@@ -45,7 +45,10 @@ export const MobileMenu = () => {
         style={isOpen ? { zIndex: 2, width: 300 } : { zIndex: 0, width: 0 }}
       />
       <Navigation toggleOpen={() => toggleOpen()} isOpen={isOpen} />
-      <MenuToggle toggle={() => toggleOpen()} style={{ zIndex: 999 }} />
+      <MenuToggle
+        toggle={() => toggleOpen()}
+        style={{ zIndex: 999, paddingTop: 6 }}
+      />
     </motion.nav>
   );
 };

@@ -29,7 +29,7 @@ const GeneratedPoemCard = (props) => {
     config,
     opacity: toggle ? 1 : 0,
 
-    from: { opacity: 0, x: 20 },
+    from: { opacity: 0, x: 10 },
   });
 
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION, {
@@ -108,7 +108,7 @@ const GeneratedPoemCard = (props) => {
                 >
                   <div>
                     <GeneratedPoemCardTitleContainer>
-                      {poem && poem.title && poem.title}
+                      {poem && poem.title ? poem.title : ""}
                     </GeneratedPoemCardTitleContainer>
                     {trail.map(({ x, height, ...rest }, index) => (
                       <animated.div
