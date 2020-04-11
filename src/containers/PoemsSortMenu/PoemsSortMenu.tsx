@@ -3,9 +3,10 @@ import { PoemsSortButton } from "../../components/PoemsSortButton/PoemsSortButto
 import {
   SortMenuContainer,
   SortMenuTitle,
-  SortMenuListContainer
+  SortMenuListContainer,
 } from "./PoemsSortMenuStyles";
 import { Button } from "antd";
+import { useWindowSize } from "../../utils/hooks/useWindowSize";
 
 import { sortMenuList } from "../../utils/sortMenuButtonList";
 
@@ -22,13 +23,15 @@ export const PoemsSortMenu = ({
   setSelectedQueryName,
   selectedQueryName,
   setCurrentOffset,
-  setOpenNewPoemModal
+  setOpenNewPoemModal,
 }: Props) => {
+  const windowWidth = useWindowSize();
+
   return (
     <SortMenuContainer className="sort-menu-container">
       <SortMenuTitle>Sort By:</SortMenuTitle>
       <SortMenuListContainer>
-        {sortMenuList.map(item => (
+        {sortMenuList.map((item) => (
           <PoemsSortButton
             buttonName={item.buttonName}
             // @ts-ignore
@@ -40,9 +43,11 @@ export const PoemsSortMenu = ({
           />
         ))}
       </SortMenuListContainer>
-      <Button onClick={() => setOpenNewPoemModal(true)}>
-        Generate New Poem
-      </Button>
+      {windowWidth && windowWidth.width && windowWidth.width > 600 ? (
+        <Button onClick={() => setOpenNewPoemModal(true)}>
+          Generate New Poem
+        </Button>
+      ) : null}
     </SortMenuContainer>
   );
 };

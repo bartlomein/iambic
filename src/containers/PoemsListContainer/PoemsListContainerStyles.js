@@ -10,3 +10,9 @@ export const PoemsListGetMoreContainer = styled.div`
   align-items: center;
   margin-bottom: 20px;
 `;
+
+export const PoemsListNewPoemButtonContainer = styled.div`
+  position: absolute;
+  top: 27px;
+  right: 19px;
+`;

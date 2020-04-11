@@ -48,7 +48,7 @@ const SingleComment = ({ id, comment, username }: Props) => {
       <CommmentAndTrashContainer>
         <CommentTextContainer>{comment.body}</CommentTextContainer>
         {person === comment.username && (
-          <DeleteCommmentButton>
+          <DeleteCommmentButton className="delete-comment-button">
             <FaTrash size="1.2em" onClick={() => deleteComment()}>
               Delete Comment
             </FaTrash>

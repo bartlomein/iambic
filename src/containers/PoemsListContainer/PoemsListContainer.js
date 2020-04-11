@@ -5,7 +5,8 @@ import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import {
   PoemsListStyleContainer,
-  PoemsListGetMoreContainer
+  PoemsListGetMoreContainer,
+  PoemsListNewPoemButtonContainer,
 } from "./PoemsListContainerStyles";
 import { PoemsSortMenu } from "../PoemsSortMenu/PoemsSortMenu";
 import { Modal, Button } from "antd";
@@ -21,9 +22,9 @@ const PoemsList = () => {
   const { data, loading, fetchMore } = useQuery(selectedQuery, {
     variables: {
       offset: 0,
-      limit: 10
+      limit: 10,
     },
-    fetchPolicy: "network-only"
+    fetchPolicy: "network-only",
   });
   if (data) {
     console.log(data);
@@ -33,7 +34,7 @@ const PoemsList = () => {
     fetchMore({
       variables: {
         offset: currentOffset,
-        limit: 10
+        limit: 10,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
         if (!fetchMoreResult) return prev;
@@ -41,7 +42,7 @@ const PoemsList = () => {
           return {
             ...prev,
             // Add the new matches data to the end of the old matches data.
-            getPosts: [...prev.getPosts, ...fetchMoreResult.getPosts]
+            getPosts: [...prev.getPosts, ...fetchMoreResult.getPosts],
           };
         } else if (prev.getPostsSortedByLikes) {
           return {
@@ -49,8 +50,8 @@ const PoemsList = () => {
 
             getPostsSortedByLikes: [
               ...prev.getPostsSortedByLikes,
-              ...fetchMoreResult.getPostsSortedByLikes
-            ]
+              ...fetchMoreResult.getPostsSortedByLikes,
+            ],
           };
         } else if (prev.getPostsSortedByComments) {
           return {
@@ -58,11 +59,11 @@ const PoemsList = () => {
 
             getPostsSortedByComments: [
               ...prev.getPostsSortedByComments,
-              ...fetchMoreResult.getPostsSortedByComments
-            ]
+              ...fetchMoreResult.getPostsSortedByComments,
+            ],
           };
         }
-      }
+      },
     });
     setCurrentOffset(currentOffset + 10);
   };
@@ -77,6 +78,9 @@ const PoemsList = () => {
       >
         <GeneratedPoemCard />
       </Modal>
+      <PoemsListNewPoemButtonContainer>
+        <Button onClick={() => setOpenNewPoemModal(true)}>New Poem</Button>
+      </PoemsListNewPoemButtonContainer>
       <PoemsSortMenu
         handleSortBy={setSelectedQuery}
         setSelectedQueryName={setSelectedQueryName}
@@ -87,7 +91,7 @@ const PoemsList = () => {
       {/* All Posts Sorted by Likes*/}
       {data &&
         data.getPostsSortedByLikes &&
-        data.getPostsSortedByLikes.map(elem => (
+        data.getPostsSortedByLikes.map((elem) => (
           <SinglePoemCard
             title={elem.title}
             body={elem.body}
@@ -103,7 +107,7 @@ const PoemsList = () => {
       {/* All Posts Sorted by Date*/}
       {data &&
         data.getPosts &&
-        data.getPosts.map(elem => (
+        data.getPosts.map((elem) => (
           <SinglePoemCard
             title={elem.title}
             body={elem.body}
@@ -120,7 +124,7 @@ const PoemsList = () => {
       {/*All posts sorted by amount of comments*/}
       {data &&
         data.getPostsSortedByComments &&
-        data.getPostsSortedByComments.map(elem => (
+        data.getPostsSortedByComments.map((elem) => (
           <SinglePoemCard
             title={elem.title}
             body={elem.body}
