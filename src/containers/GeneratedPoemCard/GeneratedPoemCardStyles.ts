@@ -23,6 +23,7 @@ export const GeneratedPoemCardLineContainer = styled.div`
 `;
 export const GeneratedPoemCardPoemContainer = styled.div``;
 export const GeneratedPoemCardButtonContainer = styled.div`
+  display: flex;
   @media screen and (max-width: 600px) {
     display: flex;
     margin-top: 30px;
