@@ -8,4 +8,9 @@ export const WelcomeCardContainer = styled.div`
   height: 450px;
   max-width: 700px;
   float: right;
+  @media screen and (max-width: 600px) {
+    height: 200px;
+    font-size: 16px;
+    margin: 20px 20px;
+  }
 `;

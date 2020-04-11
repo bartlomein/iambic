@@ -12,6 +12,9 @@ import {
   GeneratedPoemLoaderContainer,
   GeneratedPoemCardLineContainer,
   GeneratedPoemCardTitleContainer,
+  GeneratedPoemCardButtonContainer,
+  GeneratedPoemCardPoemContainer,
+  GeneratedPoemCardSingleButton,
 } from "./GeneratedPoemCardStyles";
 import { Loading } from "../../components/Loading/Loading";
 const config = { mass: 1, tension: 700, friction: 500 };
@@ -127,14 +130,20 @@ const GeneratedPoemCard = (props) => {
                     ))}
                   </div>
                 </div>
-                <Button outline onClick={generateNewPoem}>
-                  Generate
-                </Button>
-                {user && (
-                  <Button outline onClick={() => postPoem()}>
-                    Create Post
-                  </Button>
-                )}
+                <GeneratedPoemCardButtonContainer>
+                  <GeneratedPoemCardSingleButton>
+                    <Button outline onClick={generateNewPoem}>
+                      Generate
+                    </Button>
+                  </GeneratedPoemCardSingleButton>
+                  {user && (
+                    <GeneratedPoemCardSingleButton>
+                      <Button outline onClick={() => postPoem()}>
+                        Create Post
+                      </Button>
+                    </GeneratedPoemCardSingleButton>
+                  )}
+                </GeneratedPoemCardButtonContainer>
               </>
             )}
           </CardBody>

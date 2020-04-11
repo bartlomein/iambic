@@ -14,9 +14,22 @@ export const GeneratedPoemLoaderContainer = styled.div`
   align-items: center;
 `;
 export const GeneratedPoemCardLineContainer = styled.div`
-  font-size: 16px;
+  font-size: 22px;
   margin-top: 5px;
-  line-height: 16px;
+  line-height: 22px;
+  @media screen and (max-width: 600px) {
+    font-size: 16px;
+  }
+`;
+export const GeneratedPoemCardPoemContainer = styled.div``;
+export const GeneratedPoemCardButtonContainer = styled.div`
+  @media screen and (max-width: 600px) {
+    display: flex;
+    margin-top: 30px;
+  }
+`;
+export const GeneratedPoemCardSingleButton = styled.div`
+  margin: 0px 10px;
 `;
 
 export const GeneratedPoemCardTitleContainer = styled.div`

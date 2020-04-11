@@ -6,20 +6,20 @@ import {
   HomeContainer,
   TopLeftTriangle,
   TopRightTriangle,
-  RightTriangle
+  RightTriangle,
 } from "./HomeStyles";
 import Flower from "../../components/Flower/Flower";
 import WelcomeCard from "../../components/WelcomeCard/WelcomeCard";
 // import SecondFlower from '../../components/SecondFlower';
 
-const Home = props => {
+const Home = (props) => {
   return (
-    <HomeContainer>
+    <HomeContainer className="home-container">
       {/* <PoemsContainer /> */}
       <TopLeftTriangle />
       <TopRightTriangle />
       <RightTriangle />
-      {/*<Flower />*/}
+      <Flower />
       <GeneratedPoemCard setGeneratedPoem={props.setGeneratedPoem} />
       <WelcomeCard />
       {/* <SecondFlower /> */}
