@@ -5,15 +5,9 @@ const CommentsList = ({ comments, postId }) => {
   return (
     <div style={{ marginBottom: 10 }}>
       {comments &&
-        comments
-          .reverse()
-          .map((comment) => (
-            <SingleComment
-              comment={comment}
-              id={postId}
-              commentId={comment.id}
-            />
-          ))}
+        comments.map((comment) => (
+          <SingleComment comment={comment} id={postId} commentId={comment.id} />
+        ))}
     </div>
   );
 };
