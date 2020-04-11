@@ -15,4 +15,19 @@ export const PoemsListNewPoemButtonContainer = styled.div`
   position: absolute;
   top: 27px;
   right: 19px;
+
+  button {
+    color: white;
+    background: #e43a15; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to left,
+      #e65245,
+      #e43a15
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to left,
+      #e65245,
+      #e43a15
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
 `;

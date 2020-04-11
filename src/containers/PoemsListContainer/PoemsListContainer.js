@@ -79,7 +79,9 @@ const PoemsList = () => {
         <GeneratedPoemCard />
       </Modal>
       <PoemsListNewPoemButtonContainer>
-        <Button onClick={() => setOpenNewPoemModal(true)}>New Poem</Button>
+        <Button onClick={() => setOpenNewPoemModal(true)}>
+          Generate New Poem
+        </Button>
       </PoemsListNewPoemButtonContainer>
       <PoemsSortMenu
         handleSortBy={setSelectedQuery}

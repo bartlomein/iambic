@@ -28,11 +28,12 @@ export const SortMenuContainer = styled.div`
 `;
 export const SortMenuTitle = styled.div`
   font-size: 20px;
-  color: white;
+  color: black;
   @media screen and (max-width: 600px) {
     font-size: 16px;
   }
 `;
 export const SortMenuListContainer = styled.div`
   display: flex;
+  justify-content: space-between;
 `;

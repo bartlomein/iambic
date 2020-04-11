@@ -16,7 +16,7 @@ export const PoemsSortButton = ({
   sortName,
   setSelectedQueryName,
   isActive,
-  setCurrentOffset
+  setCurrentOffset,
 }: Props) => {
   return (
     <SortButtonContainer>
