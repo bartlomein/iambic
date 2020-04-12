@@ -41,9 +41,9 @@ export const MenuItem = ({ i, link, toggleOpen }) => {
         <div onClick={logout} style={{ color: "#1890ff" }}>
           Logout
         </div>
-      ) : link.loginBased === true && link.hasUser === false ? (
+      ) : link.loginBased === true && link.hasUser === true ? (
         <Link to={link && link.link}>{link && link.name}</Link>
-      ) : link.logout !== true ? (
+      ) : link.regular === true ? (
         <Link to={link && link.link}>{link && link.name}</Link>
       ) : null}
     </motion.li>

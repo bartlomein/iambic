@@ -36,7 +36,7 @@ export const MobileMenu = () => {
       animate={isOpen ? "open" : "closed"}
       custom={height}
       ref={containerRef}
-      style={isOpen ? { width: 300 } : 0}
+      style={isOpen ? { width: 100 } : 0}
     >
       <motion.div
         className="background"

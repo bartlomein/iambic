@@ -17,8 +17,8 @@ export const Navigation = ({ toggleOpen, isOpen }) => {
   const itemIds = [0, 1, 2, 3, 4];
   const hasUser = user ? true : false;
   const links = [
-    { name: "Home", link: "/" },
-    { name: "Poems", link: "/poems" },
+    { name: "Home", link: "/", regular: true },
+    { name: "Poems", link: "/poems", regular: true },
     { name: "Login", link: "/login", hasUser: !hasUser, loginBased: true },
     {
       name: "Register",
