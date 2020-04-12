@@ -17,7 +17,7 @@ const Register = (props: RouterProps) => {
   const [registerErrors, setRegisterErrors] = useState({
     duplicateUsername: false,
     passwordsDontMatch: false,
-    duplicateEmail: false
+    duplicateEmail: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -25,13 +25,13 @@ const Register = (props: RouterProps) => {
     username: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(proxy, result) {
       setIsSubmitting(false);
-      props.history.push("/poems");
+      props.history.push("/login");
     },
     onError(err) {
       console.log("error");
@@ -42,7 +42,7 @@ const Register = (props: RouterProps) => {
         err?.graphQLErrors[0]?.extensions?.exception?.errors
       );
     },
-    variables: values
+    variables: values,
   });
 
   function checkForRegisterErrors(error: RegisterError) {

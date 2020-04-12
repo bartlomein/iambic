@@ -28,6 +28,7 @@ function SinglePoemCard({
   title,
 }) {
   const { user } = useContext(AuthContext);
+  console.log(user);
   const singlePoemContainerProps = {
     backgroundImage:
       "radial-gradient( circle 274px at 7.4% 17.9%,  rgba(82,107,248,1) 0.3%, rgba(167,139,252,1) 90.5%",

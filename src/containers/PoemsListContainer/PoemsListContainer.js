@@ -14,11 +14,12 @@ import { PoemsSortMenu } from "../PoemsSortMenu/PoemsSortMenu";
 import { Modal, Button } from "antd";
 import GeneratedPoemCard from "../GeneratedPoemCard/GeneratedPoemCard";
 import { Loading } from "../../components/Loading/Loading";
+import { useWindowSize } from "../../utils/hooks/useWindowSize";
 const PoemsList = () => {
   const [selectedQuery, setSelectedQuery] = useState(FETCH_POST_QUERY);
   const [selectedQueryName, setSelectedQueryName] = useState("Most Recent");
   const [currentOffset, setCurrentOffset] = useState(10);
-
+  const windowWidth = useWindowSize();
   const [isNewPoemModalOpen, setOpenNewPoemModal] = useState(false);
 
   const { data, loading, fetchMore } = useQuery(selectedQuery, {
@@ -80,15 +81,17 @@ const PoemsList = () => {
       >
         <GeneratedPoemCard />
       </Modal>
-      <PoemsListNewPoemButtonContainer>
-        <FiFilePlus
-          onClick={() => setOpenNewPoemModal(true)}
-          size="2em"
-          color="black"
-        >
-          Generate New Poem
-        </FiFilePlus>
-      </PoemsListNewPoemButtonContainer>
+      {windowWidth.width < 600 ? (
+        <PoemsListNewPoemButtonContainer>
+          <FiFilePlus
+            onClick={() => setOpenNewPoemModal(true)}
+            size="2em"
+            color="black"
+          >
+            Generate New Poem
+          </FiFilePlus>
+        </PoemsListNewPoemButtonContainer>
+      ) : null}
       <PoemsSortMenu
         handleSortBy={setSelectedQuery}
         setSelectedQueryName={setSelectedQueryName}
