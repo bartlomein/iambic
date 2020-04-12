@@ -26,7 +26,7 @@ export const Navigation = ({ toggleOpen, isOpen }) => {
       hasUser: !hasUser,
       loginBased: true,
     },
-    { name: "Logout", hasUser: hasUser },
+    { name: "Logout", hasUser: hasUser, logout: true },
     { name: "Contact", link: "https://twitter.com/bartlomein", external: true },
   ];
   return (

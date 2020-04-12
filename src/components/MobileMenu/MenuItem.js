@@ -37,9 +37,15 @@ export const MenuItem = ({ i, link, toggleOpen }) => {
         <a href={link.link} target="_blank">
           {link.name}
         </a>
-      ) : (
+      ) : link.logout === true && link.hasUser === true ? (
+        <div onClick={logout} style={{ color: "#1890ff" }}>
+          Logout
+        </div>
+      ) : link.loginBased === true && link.hasUser === false ? (
         <Link to={link && link.link}>{link && link.name}</Link>
-      )}
+      ) : link.logout !== true ? (
+        <Link to={link && link.link}>{link && link.name}</Link>
+      ) : null}
     </motion.li>
   );
 };
