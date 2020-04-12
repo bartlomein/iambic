@@ -29,5 +29,5 @@ const links = [
   { name: "Poems", link: "/poems" },
   { name: "Login", link: "/login" },
   { name: "Register", link: "/register" },
-  { name: "Contact", link: "https://twitter.com/bartlomein" },
+  { name: "Contact", link: "https://twitter.com/bartlomein", external: true },
 ];

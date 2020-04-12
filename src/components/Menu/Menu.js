@@ -46,7 +46,7 @@ const Menu = () => {
               </div>
             )}
             <LinkContainer>
-              <Link to="https://twitter.com/bartlomein">contact</Link>
+              <a href="https://twitter.com/bartlomein">contact</a>
             </LinkContainer>
           </EndingItemsContainer>
         </MenuHeaderContainer>

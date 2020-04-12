@@ -31,7 +31,13 @@ export const MenuItem = ({ i, link, toggleOpen }) => {
       onClick={toggleOpen}
       style={{ fontSize: 40 }}
     >
-      <Link to={link && link.link}>{link && link.name}</Link>
+      {link && link.external === true ? (
+        <a href={link.link} target="_blank">
+          {link.name}
+        </a>
+      ) : (
+        <Link to={link && link.link}>{link && link.name}</Link>
+      )}
     </motion.li>
   );
 };
