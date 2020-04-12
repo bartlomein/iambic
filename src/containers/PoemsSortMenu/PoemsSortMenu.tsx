@@ -4,9 +4,10 @@ import {
   SortMenuContainer,
   SortMenuTitle,
   SortMenuListContainer,
+  SortMenuNewPoemButton,
 } from "./PoemsSortMenuStyles";
 import { Button } from "antd";
-
+import { FiFilePlus } from "react-icons/fi";
 import { useWindowSize } from "../../utils/hooks/useWindowSize";
 
 import { sortMenuList } from "../../utils/sortMenuButtonList";
@@ -43,12 +44,17 @@ export const PoemsSortMenu = ({
             isActive={selectedQueryName === item.buttonName ? true : false}
           />
         ))}
+        {windowWidth && windowWidth.width && windowWidth.width > 600 ? (
+          <SortMenuNewPoemButton>
+            Generate New Poem
+            <FiFilePlus
+              onClick={() => setOpenNewPoemModal(true)}
+              size="1.5em"
+              color="white"
+            ></FiFilePlus>
+          </SortMenuNewPoemButton>
+        ) : null}
       </SortMenuListContainer>
-      {windowWidth && windowWidth.width && windowWidth.width > 600 ? (
-        <Button onClick={() => setOpenNewPoemModal(true)}>
-          Generate New Poem
-        </Button>
-      ) : null}
     </SortMenuContainer>
   );
 };

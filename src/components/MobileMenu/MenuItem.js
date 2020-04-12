@@ -1,6 +1,7 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/auth";
 
 const variants = {
   open: {
@@ -23,6 +24,7 @@ const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
 export const MenuItem = ({ i, link, toggleOpen }) => {
   const style = { border: `2px solid ${colors[i]}` };
+  const { user, logout } = useContext(AuthContext);
   return (
     <motion.li
       variants={variants}

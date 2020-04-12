@@ -35,5 +35,13 @@ export const SortMenuTitle = styled.div`
 `;
 export const SortMenuListContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+`;
+
+export const SortMenuNewPoemButton = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 `;

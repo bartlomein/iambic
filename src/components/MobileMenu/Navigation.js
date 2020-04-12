@@ -1,6 +1,7 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
+import { AuthContext } from "../../context/auth";
 
 const variants = {
   open: {
@@ -11,23 +12,38 @@ const variants = {
   },
 };
 
-export const Navigation = ({ toggleOpen, isOpen }) => (
-  <>
-    {isOpen && (
-      <motion.ul variants={variants} style={{ zIndex: 999 }}>
-        {itemIds.map((i) => (
-          <MenuItem i={i} key={i} link={links[i]} toggleOpen={toggleOpen} />
-        ))}
-      </motion.ul>
-    )}
-  </>
-);
-
-const itemIds = [0, 1, 2, 3, 4];
-const links = [
-  { name: "Home", link: "/" },
-  { name: "Poems", link: "/poems" },
-  { name: "Login", link: "/login" },
-  { name: "Register", link: "/register" },
-  { name: "Contact", link: "https://twitter.com/bartlomein", external: true },
-];
+export const Navigation = ({ toggleOpen, isOpen }) => {
+  const { user, logout } = useContext(AuthContext);
+  const itemIds = [0, 1, 2, 3, 4];
+  const hasUser = user ? true : false;
+  const links = [
+    { name: "Home", link: "/" },
+    { name: "Poems", link: "/poems" },
+    { name: "Login", link: "/login", hasUser: !hasUser, loginBased: true },
+    {
+      name: "Register",
+      link: "/register",
+      hasUser: !hasUser,
+      loginBased: true,
+    },
+    { name: "Logout", hasUser: hasUser },
+    { name: "Contact", link: "https://twitter.com/bartlomein", external: true },
+  ];
+  return (
+    <>
+      {isOpen && (
+        <motion.ul variants={variants} style={{ zIndex: 999 }}>
+          {itemIds.map((i) => (
+            <MenuItem
+              i={i}
+              key={i}
+              link={links[i]}
+              toggleOpen={toggleOpen}
+              logout={logout}
+            />
+          ))}
+        </motion.ul>
+      )}
+    </>
+  );
+};
