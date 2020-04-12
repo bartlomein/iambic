@@ -8,6 +8,8 @@ import {
   PoemsListGetMoreContainer,
   PoemsListNewPoemButtonContainer,
 } from "./PoemsListContainerStyles";
+import { FiFilePlus } from "react-icons/fi";
+
 import { PoemsSortMenu } from "../PoemsSortMenu/PoemsSortMenu";
 import { Modal, Button } from "antd";
 import GeneratedPoemCard from "../GeneratedPoemCard/GeneratedPoemCard";
@@ -79,9 +81,13 @@ const PoemsList = () => {
         <GeneratedPoemCard />
       </Modal>
       <PoemsListNewPoemButtonContainer>
-        <Button onClick={() => setOpenNewPoemModal(true)}>
+        <FiFilePlus
+          onClick={() => setOpenNewPoemModal(true)}
+          size="2em"
+          color="black"
+        >
           Generate New Poem
-        </Button>
+        </FiFilePlus>
       </PoemsListNewPoemButtonContainer>
       <PoemsSortMenu
         handleSortBy={setSelectedQuery}

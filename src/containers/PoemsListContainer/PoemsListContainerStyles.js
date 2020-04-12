@@ -13,9 +13,12 @@ export const PoemsListGetMoreContainer = styled.div`
 
 export const PoemsListNewPoemButtonContainer = styled.div`
   position: absolute;
-  top: 27px;
+  top: 23px;
   right: 19px;
-
+  background: white;
+  border-radius: 50px;
+  box-shadow: 1px 1px 3px gray;
+  padding: 10px;
   button {
     font-weight: 400;
   }
