@@ -31,7 +31,6 @@ export const PoemsSortMenu = ({
 
   return (
     <SortMenuContainer className="sort-menu-container">
-      <SortMenuTitle>Sort By:</SortMenuTitle>
       <SortMenuListContainer>
         {sortMenuList.map((item) => (
           <PoemsSortButton
@@ -47,7 +46,11 @@ export const PoemsSortMenu = ({
         {windowWidth && windowWidth.width && windowWidth.width > 600 ? (
           <SortMenuNewPoemButton onClick={() => setOpenNewPoemModal(true)}>
             Generate New Poem
-            <FiFilePlus size="1.5em" color="white"></FiFilePlus>
+            <FiFilePlus
+              size="1.3em"
+              color="white"
+              style={{ marginLeft: 5, paddingBottom: 2 }}
+            ></FiFilePlus>
           </SortMenuNewPoemButton>
         ) : null}
       </SortMenuListContainer>

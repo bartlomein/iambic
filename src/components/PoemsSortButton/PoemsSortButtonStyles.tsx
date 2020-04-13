@@ -7,8 +7,8 @@ type ButtonProps = {
 export const SortButtonContainer = styled.div``;
 export const SortButton = styled.div<ButtonProps>`
   cursor: pointer;
-  color: ${(props: ButtonProps) => (props.isActive ? "red" : "white")};
-  font-size: 20px;
+  color: ${(props: ButtonProps) => (props.isActive ? "#fffc00" : "white")};
+  font-size: 22px;
   font-weight: bold;
   @media screen and (max-width: 600px) {
     font-size: 13px;

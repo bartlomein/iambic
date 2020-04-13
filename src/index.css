@@ -39,6 +39,10 @@ code {
 .home-container .generated-poem-card .card {
   max-height: 351px;
 }
+
+.ant-modal-body .generate-poem-card-line {
+  font-size: 16px !important;
+}
 .home-container {
   margin: 0 auto;
   max-width: 1000px;

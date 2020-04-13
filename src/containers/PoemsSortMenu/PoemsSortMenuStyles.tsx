@@ -3,16 +3,16 @@ export const SortMenuContainer = styled.div`
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  background: #d3cce3; /* fallback for old browsers */
+  background: #642b73; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #e9e4f0,
-    #d3cce3
+    #c6426e,
+    #642b73
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to right,
-    #e9e4f0,
-    #d3cce3
+    #c6426e,
+    #642b73
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   padding: 10px;
@@ -39,7 +39,7 @@ export const SortMenuListContainer = styled.div`
 `;
 
 export const SortMenuNewPoemButton = styled.div`
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: white;
   border-radius: 5px;

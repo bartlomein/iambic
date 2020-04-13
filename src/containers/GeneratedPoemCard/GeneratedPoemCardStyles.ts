@@ -14,7 +14,7 @@ export const GeneratedPoemLoaderContainer = styled.div`
   align-items: center;
 `;
 export const GeneratedPoemCardLineContainer = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   margin-top: 5px;
   line-height: 24px;
   @media screen and (max-width: 600px) {

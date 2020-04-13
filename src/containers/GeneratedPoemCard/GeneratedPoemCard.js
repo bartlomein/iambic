@@ -122,7 +122,7 @@ const GeneratedPoemCard = (props) => {
                         }}
                       >
                         <animated.div style={{ height }}>
-                          <GeneratedPoemCardLineContainer>
+                          <GeneratedPoemCardLineContainer class="generate-poem-card-line">
                             {poem && poem.poem && poem.poem[index]}
                           </GeneratedPoemCardLineContainer>
                         </animated.div>
