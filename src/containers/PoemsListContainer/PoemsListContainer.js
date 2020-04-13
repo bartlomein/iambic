@@ -131,7 +131,18 @@ const PoemsList = () => {
             username={elem.username}
           />
         ))}
-      {!data && <Loading />}
+      {!data && (
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Loading />
+        </div>
+      )}
       {/*All posts sorted by amount of comments*/}
       {data &&
         data.getPostsSortedByComments &&

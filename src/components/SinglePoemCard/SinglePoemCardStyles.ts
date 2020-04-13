@@ -17,6 +17,7 @@ export const DeletePoemContainerDiv = styled.div`
 export const SinglePoemCardPoemTitle = styled.div`
   font-family: "Libre Baskerville", serif;
   font-size: 20px;
+  margin-bottom: 10px;
   color: black;
 `;
 

@@ -45,13 +45,9 @@ export const PoemsSortMenu = ({
           />
         ))}
         {windowWidth && windowWidth.width && windowWidth.width > 600 ? (
-          <SortMenuNewPoemButton>
+          <SortMenuNewPoemButton onClick={() => setOpenNewPoemModal(true)}>
             Generate New Poem
-            <FiFilePlus
-              onClick={() => setOpenNewPoemModal(true)}
-              size="1.5em"
-              color="white"
-            ></FiFilePlus>
+            <FiFilePlus size="1.5em" color="white"></FiFilePlus>
           </SortMenuNewPoemButton>
         ) : null}
       </SortMenuListContainer>
