@@ -42,6 +42,11 @@ export const Navigation = ({ toggleOpen, isOpen }) => {
               logout={logout}
             />
           ))}
+          <div style={{ fontSize: 40 }}>
+            <a href="https://twitter.com/bartlomein" target="_blank">
+              Contact
+            </a>
+          </div>
         </motion.ul>
       )}
     </>

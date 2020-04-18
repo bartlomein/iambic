@@ -25,6 +25,7 @@ const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 export const MenuItem = ({ i, link, toggleOpen }) => {
   const style = { border: `2px solid ${colors[i]}` };
   const { user, logout } = useContext(AuthContext);
+
   return (
     <motion.li
       variants={variants}
@@ -33,7 +34,7 @@ export const MenuItem = ({ i, link, toggleOpen }) => {
       onClick={toggleOpen}
       style={{ fontSize: 40 }}
     >
-      {link && link.external === true ? (
+      {link.external === true ? (
         <a href={link.link} target="_blank">
           {link.name}
         </a>
