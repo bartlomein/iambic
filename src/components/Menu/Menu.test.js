@@ -10,5 +10,5 @@ it("displays logout based on if user is there", () => {
     expect(
       document.querySelector(".menu-ending-items-container").innerHTML
     ).toBe("logout");
-  } 
+  }
 });
