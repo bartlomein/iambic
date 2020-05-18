@@ -12,7 +12,7 @@ import Flower from "../../components/Flower/Flower";
 import WelcomeCard from "../../components/WelcomeCard/WelcomeCard";
 // import SecondFlower from '../../components/SecondFlower';
 
-const Home = (props) => {
+const Home = (props: any) => {
   return (
     <HomeContainer className="home-container">
       {/* <PoemsContainer /> */}
