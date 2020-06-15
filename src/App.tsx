@@ -4,6 +4,7 @@ import Home from "./containers/Home/Home";
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import PoemsList from "./containers/PoemsListContainer/PoemsListContainer";
+import RapsList from "./containers/RapsListContainer/RapsListContainer";
 import SinglePoemPage from "./containers/SinglePoemPage/SinglePoemPage";
 import { AuthProvider } from "./context/auth";
 import AuthRoute from "./utils/AuthRoute";
@@ -39,6 +40,18 @@ const App = () => {
             component={SinglePoemPage}
             windowWidth={windowWidth}
           />
+          <Route
+            exact
+            path="/raps"
+            component={RapsList}
+            windowWidth={windowWidth}
+          />
+          {/* <Route
+            exact
+            path="/raps/:poemId"
+            component={SinglePoemPage}
+            windowWidth={windowWidth}
+          /> */}
           <AuthRoute
             exact
             path="/login"

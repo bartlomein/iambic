@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useTrail, animated } from "react-spring";
 import { withRouter } from "react-router-dom";
 import { Button, Card, CardBody } from "shards-react";
-import apiCall from "../../api";
+import { poetryApiCall, rapApiCall } from "../../api";
 import gql from "graphql-tag";
 import { AuthContext } from "../../context/auth";
 import { useMutation } from "@apollo/react-hooks";
@@ -13,7 +13,6 @@ import {
   GeneratedPoemCardLineContainer,
   GeneratedPoemCardTitleContainer,
   GeneratedPoemCardButtonContainer,
-  GeneratedPoemCardPoemContainer,
   GeneratedPoemCardSingleButton,
 } from "./GeneratedPoemCardStyles";
 import { Loading } from "../../components/Loading/Loading";
@@ -65,7 +64,9 @@ const GeneratedPoemCard = (props) => {
   const callPoem = () => {
     const getPoem = async () => {
       setHasData(false);
-      const poem = await apiCall("poetry", 4);
+      const poem = await poetryApiCall("poetry", 4);
+      const rap = await rapApiCall("We out here");
+      console.log(rap);
 
       setHasData(true);
 
